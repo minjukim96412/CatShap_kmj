@@ -38,17 +38,22 @@
 				        Users user = (Users)(sessions != null ? sessions.getAttribute("user") : null);
 	
 				        if (user != null) {
-				            out.print("<p>" + user.getEmail() + " 이메일로</p>");
-				            out.print("<p>메일이 성공적으로 전송되었습니다.</p>");
+				            out.print("<div class=\"sendEmailContent\">" + user.getEmail() + " 이메일로<br />");
+				            out.print("메일이 성공적으로 전송되었습니다.</div>");
 				            session.invalidate();
 				        } else {
-				            out.println("<p>비밀번호 찾기 실패. 다시 시도해주세요.</p>");
+				            out.println("<div class=\"sendEmailContent\">비밀번호 찾기 실패. 다시 시도해주세요.</div>");
 				        }
 				    %>
                 </div>
+                <div class="authcode-input">
+                  <div class="authcode-input-container">
+                    <input id="authcode" class="label-input-authcode" placeholder="인증코드를 입력하세요." type="text" />
+                  </div>
+                </div>
                 <div class="findPwBtnDiv">
-                    <button id="toLoginBtn" class="toLoginBtn">로그인하러 가기</button>
-                    <button id="toMainBtn" class="toMainBtn">메인화면으로 이동</button>
+                    <button id="tryAuthcodeBtn" class="tryAuthcodeBtn">인증코드 다시받기</button>
+                    <button id="cancelFindPwBtn" class="cancelFindPwBtn">취소</button>
                 </div>
             </div>
         </section>

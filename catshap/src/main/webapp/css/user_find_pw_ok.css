@@ -23,8 +23,36 @@
     display: flex;
 }
 
-.toLoginBtn,
-.toMainBtn {
+.authcode-input {
+    width: 100%;
+}
+
+.authcode-input-container {
+    align-self: stretch;
+    padding: 0 0 0 var(--padding-11xs);
+}
+
+.label-input-authcode {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background-color: var(--color-whitesmoke-100);
+    height: 53.3px;
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.02) inset;
+    border-radius: var(--br-10xs-6);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-lg) var(--padding-3xl) 17.3px;
+    box-sizing: border-box;
+    font-family: var(--font-jost);
+    opacity: 0.85;
+    min-width: 240px;
+}
+
+.tryAuthcodeBtn,
+.cancelFindPwBtn {
     padding: 15px;
     align-items: center;
     justify-content: center;
@@ -37,14 +65,14 @@
     font-size: var(--font-size-sm);
 }
 
-.toLoginBtn {
+.tryAuthcodeBtn {
     width: 200px;
-    background-color: #31caae;
+    background-color: #333;
     color: #fff;
     margin-right: 10px;
 }
 
-.toMainBtn {
+.cancelFindPwBtn {
     width: 200px;
     padding: 15px;
     color: #333;
@@ -58,4 +86,8 @@
     color: red;
     margin-top: 4px;
     font-size: var(--font-size-xs);
+}
+
+.sendEmailContent {
+	font-size: medium;
 }
