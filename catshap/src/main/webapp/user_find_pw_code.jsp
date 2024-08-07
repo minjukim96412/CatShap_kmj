@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <link rel="stylesheet" href="./css/user_find_pw_ok.css" />
+    <link rel="stylesheet" href="./css/user_find_pw_code.css" />
     <link rel="stylesheet" href="./css/user_find.css" />
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/main.css" />

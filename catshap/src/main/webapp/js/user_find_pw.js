@@ -17,7 +17,7 @@ $(function () {
                 },
                 success: function (response) {
                     if (response.success) {
-                        window.location.href = 'user_find_pw_ok.jsp';
+                        window.location.href = 'user_find_pw_code.jsp';
                     } else {
                         alert("올바르지 않은 계정입니다.");
                     }
