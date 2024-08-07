@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import catshap.butler.bean.UserAuthcode;
+import catshap.butler.exception.UserAuthcodeNotInsertException;
 import catshap.butler.exception.UserAuthcodeNotVerifyException;
 
 public class UserAuthcodeVerifyTest {
@@ -26,28 +27,47 @@ public class UserAuthcodeVerifyTest {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UserAuthcodeNotInsertException {
 		UserAuthcode userAuthcode = new UserAuthcode(1, "hong123", 123123, new Timestamp(System.currentTimeMillis()));
 		try {
 			insertUserAuthcode(userAuthcode);
+			getUserAuthcode(userAuthcode.getUsid());
+		} catch (UserAuthcodeNotInsertException e) {
+			System.out.println(e.getMessage());
 		} catch (UserAuthcodeNotVerifyException e) {
 			System.out.println(e.getMessage());
 		}
-			
+
 	}
 
 	// 인증코드 등록 확인 테스트
-	private static void insertUserAuthcode(UserAuthcode userAuthcode) throws UserAuthcodeNotVerifyException {
+	private static void insertUserAuthcode(UserAuthcode userAuthcode) throws UserAuthcodeNotInsertException {
 		SqlSession ss = ssf.openSession();
 		try {
 			int result = ss.insert("userauthcode.insertUserAuthcode", userAuthcode);
 			if (result > 0) {
 				System.out.println("인증코드 테이블 등록 성공!");
 			} else {
-				throw new UserAuthcodeNotVerifyException();
+				throw new UserAuthcodeNotInsertException();
 			}
 		} finally {
 			ss.commit();
+			ss.close();
+		}
+	}
+
+	// 해당 사용자의 인증코드 추출 테스트
+	private static void getUserAuthcode(String usid) throws UserAuthcodeNotVerifyException {
+		SqlSession ss = ssf.openSession();
+		try {
+			UserAuthcode uauths = ss.selectOne("userauthcode.getUserAuthcode", usid);
+			System.out.println(uauths);
+			if (uauths != null) {
+				System.out.println("인증코드 : " + uauths.getUauthcode());
+			} else {
+				throw new UserAuthcodeNotVerifyException();
+			}
+		} finally {
 			ss.close();
 		}
 	}
