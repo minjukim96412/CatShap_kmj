@@ -6,17 +6,17 @@ public class UserAuthcode {
 
 	private int userno;
 	private String usid;
-	private int uautocode;
+	private int uauthcode;
 	private Timestamp uautocoderegdate;
 
 	public UserAuthcode() {
 	}
 
-	public UserAuthcode(int userno, String usid, int uautocode, Timestamp uautocoderegdate) {
+	public UserAuthcode(int userno, String usid, int uauthcode, Timestamp uautocoderegdate) {
 		super();
 		this.userno = userno;
 		this.usid = usid;
-		this.uautocode = uautocode;
+		this.uauthcode = uauthcode;
 		this.uautocoderegdate = uautocoderegdate;
 	}
 
@@ -36,12 +36,12 @@ public class UserAuthcode {
 		this.usid = usid;
 	}
 
-	public int getUautocode() {
-		return uautocode;
+	public int getUauthcode() {
+		return uauthcode;
 	}
 
-	public void setUautocode(int uautocode) {
-		this.uautocode = uautocode;
+	public void setUauthcode(int uauthcode) {
+		this.uauthcode = uauthcode;
 	}
 
 	public Timestamp getUautocoderegdate() {
@@ -54,7 +54,7 @@ public class UserAuthcode {
 
 	@Override
 	public String toString() {
-		return "UserAuthcode [userno=" + userno + ", usid=" + usid + ", uautocode=" + uautocode + ", uautocoderegdate="
+		return "UserAuthcode [userno=" + userno + ", usid=" + usid + ", uauthcode=" + uauthcode + ", uautocoderegdate="
 				+ uautocoderegdate + "]";
 	}
 
