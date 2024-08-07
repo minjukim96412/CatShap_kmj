@@ -42,7 +42,7 @@
                                     <label for="uname">이름</label>
                                     <input id="uname" class="label-input-uname" placeholder="NAME" type="text" />
                                     <p id="uname-error" class="error-message" style="display: none;"></p>
-                                    <label for="uemail">이메일</label>
+                                    <label for="email">이메일</label>
                                     <input id="email" class="label-input-email" placeholder="EMAIL" type="email" />
                                     <p id="email-error" class="error-message" style="display: none;"></p>
                                 </div>
