@@ -28,7 +28,7 @@ public class UserAuthcodeVerifyTest {
 	}
 
 	public static void main(String[] args) throws UserAuthcodeNotInsertException {
-		UserAuthcode userAuthcode = new UserAuthcode(1, "hong123", 123123, new Timestamp(System.currentTimeMillis()));
+		UserAuthcode userAuthcode = new UserAuthcode(1, "hong123", "123123", new Timestamp(System.currentTimeMillis()));
 		try {
 			insertUserAuthcode(userAuthcode);
 			getUserAuthcode(userAuthcode.getUsid());
