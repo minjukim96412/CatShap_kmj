@@ -8,4 +8,13 @@
 		where uname=#{uname}
 		and email=#{email}
 	</select>
+	
+	<select id="getUserPw" parameterType="Users" resultType="string">
+		select upass
+		from users
+		where uname=#{uname}
+		and usid=#{usid}
+		and email=#{email}
+	</select>
+	
 </mapper>

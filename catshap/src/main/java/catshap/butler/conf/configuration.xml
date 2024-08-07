@@ -19,8 +19,7 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="catshap/butler/conf/UserFindId.xml"/>
-		<mapper resource="catshap/butler/conf/UserFindPw.xml"/>
-		<mapper resource="catshap/butler/conf/UserAuthcodeVerify.xml"/>
+		<mapper resource="catshap/butler/conf/User.xml"/>
+		<mapper resource="catshap/butler/conf/UserAuthcode.xml"/>
 	</mappers>
 </configuration>
