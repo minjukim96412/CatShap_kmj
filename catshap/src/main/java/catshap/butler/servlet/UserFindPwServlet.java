@@ -43,11 +43,17 @@ public class UserFindPwServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			if (upass != null) {
 				session.setAttribute("user", user);
-				jsonResponse.addProperty("success", true);
+				JsonObject userJson = new JsonObject();
+                userJson.addProperty("uname", user.getUname());
+                userJson.addProperty("usid", user.getUsid());
+                userJson.addProperty("email", user.getEmail());
+                userJson.addProperty("upass", user.getUpass());
+                jsonResponse.add("user", userJson);
+                jsonResponse.addProperty("success", true);
 			} else {
 				jsonResponse.addProperty("success", false);
 			}
-			response.setContentType("application/json charset=UTF-8");
+			response.setContentType("application/json; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.print(jsonResponse.toString());
 			out.flush();	

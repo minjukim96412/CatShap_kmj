@@ -17,6 +17,7 @@ $(function () {
                 },
                 success: function (response) {
                     if (response.success) {
+						sessionStorage.setItem('user', JSON.stringify(response.user));
                         window.location.href = 'user_find_pw_code.jsp';
                     } else {
                         alert("올바르지 않은 계정입니다.");

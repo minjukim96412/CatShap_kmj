@@ -1,5 +1,8 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="catshap.butler.bean.Users"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +15,7 @@
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/main.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	<script src="./js/user_find_ok.js"></script>
+	<script src="./js/user_find_pw_code.js"></script>
 </head>
 
 <body>
