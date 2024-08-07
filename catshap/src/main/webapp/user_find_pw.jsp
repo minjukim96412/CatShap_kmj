@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./css/user_find.css" />
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="./js/user_find_pw.js"></script>
 </head>
 <body>
     <div class="login-desktop">
@@ -27,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="/findUserPw" method="post">
+                <form action="/user-pw-recovery" method="post">
                     <div class="input-fields-parent">
                         <div class="input-fields">
                             <div class="find-input">
@@ -37,10 +39,13 @@
                                 <div class="user-input">
                                     <label for="uname">이름</label>
                                     <input id="uname" class="label-input-uname" placeholder="NAME" type="text" />
+                                    <p id="uname-error" class="error-message" style="display: none;"></p>
                                     <label for="usid">아이디</label>
                                     <input id="usid" class="label-input-usid" placeholder="ID" type="text" />
-                                    <label for="uemail">이메일</label>
+                                    <p id="usid-error" class="error-message" style="display: none;"></p>
+                                    <label for="email">이메일</label>
                                     <input id="email" class="label-input-email" placeholder="EMAIL" type="email" />
+                                    <p id="email-error" class="error-message" style="display: none;"></p>
                                 </div>
                             </div>
                         </div>

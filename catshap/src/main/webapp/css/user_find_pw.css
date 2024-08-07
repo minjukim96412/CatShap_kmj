@@ -30,11 +30,6 @@
     min-width: 240px;
 }
 
-.user-input {
-    flex-direction: column;
-    gap: 16.3px;
-}
-
 .findPwBtnDiv {
     display: flex;
 }
@@ -64,4 +59,11 @@
     width: 100px;
     padding: 15px;
     color: #333;
+}
+
+.error-message {
+    color: red;
+    margin-top: 4px;
+    font-size: var(--font-size-xs);
+    margin-top: 0;
 }
