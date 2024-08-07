@@ -15,8 +15,8 @@ public class EmailUtil {
 
 	private static final String SMTP_HOST = "smtp.gmail.com"; // Replace with your SMTP server
 	private static final String SMTP_PORT = "587"; // Replace with your SMTP port
-	private static final String SMTP_USER = "내 이메일 주소"; // Replace with your email
-	private static final String SMTP_PASSWORD = "내 이메일 앱 비밀번호"; // Replace with your email password
+	private static final String SMTP_USER = "catshap653@gmail.com"; // Replace with your email
+	private static final String SMTP_PASSWORD = "MY APP PASSWORD"; // Replace with your email password
 
 	public static void sendEmail(String to, String subject, String body) throws MessagingException {
 		Properties props = new Properties();

@@ -30,9 +30,9 @@ public class UserFindPwTest {
 
 	public static void main(String[] args) {
 		Users user = new Users();
-		user.setUname("관리자");
-		user.setUsid("admin");
-		user.setEmail("mayoonju@gmail.com");
+		user.setUname("사용자");
+		user.setUsid("user");
+		user.setEmail("test@gmail.com");
 
 		try {
 			userExist(user);
