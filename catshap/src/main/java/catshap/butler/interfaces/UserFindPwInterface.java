@@ -6,6 +6,6 @@ import catshap.butler.bean.Users;
 
 public interface UserFindPwInterface {
 
-	public abstract void getUserPw(Users user) throws SQLException; // 사용자 조회
+	public abstract String getUserPw(Users user) throws SQLException; // 사용자 조회
 	
 }

@@ -30,12 +30,9 @@ public class UserFindPwDao implements UserFindPwInterface {
 	}
 
 	@Override
-	public void getUserPw(Users user) throws SQLException {
-		String upass;
-		try (SqlSession ss = ssf.openSession()) {
-			upass = ss.selectOne("user.getUserPw", user);
-		}
-
+	public String getUserPw(Users user) throws SQLException {
+		SqlSession ss = ssf.openSession();
+		String upass = ss.selectOne("user.getUserPw", user);
 		if (upass != null) {
 			try {
 				EmailUtil.sendEmail(user.getEmail(), "Your Password", "비밀번호: " + upass);
@@ -43,6 +40,8 @@ public class UserFindPwDao implements UserFindPwInterface {
 				me.printStackTrace();
 			}
 		}
+		ss.close();
+		return upass;
 	}
 
 }
