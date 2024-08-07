@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
-
+	
 	<select id="getUserId" parameterType="Users" resultType="string">
 		select usid
 		from users
@@ -9,8 +9,8 @@
 		and email=#{email}
 	</select>
 	
-	<select id="getUserPw" parameterType="Users" resultType="string">
-		select upass
+	<select id="getUser" parameterType="Users" resultType="Users">
+		select *
 		from users
 		where uname=#{uname}
 		and usid=#{usid}

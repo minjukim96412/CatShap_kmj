@@ -4,7 +4,7 @@
 
 	<insert id="insertUserAuthcode" parameterType="UserAuthcode">
 		insert into userauthcode (userno, usid, uauthcode, uauthcoderegdate)
-		values (#{userno}, #{usid}, #{uautocode}, sysdate)
+		values (#{userno}, #{usid}, #{uauthcode}, sysdate)
 	</insert>
 
 	<select id="getUserAuthcode" parameterType="String" resultType="UserAuthcode">
