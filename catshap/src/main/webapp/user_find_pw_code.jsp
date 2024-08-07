@@ -50,7 +50,7 @@
 				        }
 				    %>
                 </div>
-                <form action="/user-authcode-veritfy" method="post" class="authcode-input">
+                <form action="/user-authcode-verify" method="post" class="authcode-input">
                   <div class="authcode-input-container">
                     <input id="uauthcode" class="label-input-authcode" placeholder="인증코드를 입력하세요." type="text" />
                     <input id="verifyAuthcodeBtn" class="verifyAuthcodeBtn" type="submit" value="확인" />

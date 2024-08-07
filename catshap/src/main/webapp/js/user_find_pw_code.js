@@ -4,9 +4,30 @@ $(function() {
 	$('#verifyAuthcodeBtn').on('click', (e) => {
 		e.preventDefault();
 
-		const authcode = $('#uauthcode').val().trim();
-		if(validate(authcode)) {
-			console.log('인증코드 유효검사 성공');
+		const uauthcode = $('#uauthcode').val().trim();
+		const user = JSON.parse(sessionStorage.getItem('user'));
+		console.log(uauthcode);
+		console.log(user);
+		console.log("전달!");
+		if(validate(uauthcode)) {
+			$.ajax({
+			type: 'POST',
+			url: 'http://localhost:8888/catshap/user-authcode-verify',
+			data: {
+				uauthcode: uauthcode,
+				usid: user.usid
+			},
+			success: function(response) {
+				if (response.success) {
+					alert("인증코드가 일치합니다!");
+				} else {
+					alert("인증코드 불일치합니다! 다시 입력해주세요.");
+				}
+			},
+			error: function() {
+				alert('서버 오류가 발생했습니다.');
+			}
+		})
 		}
 	});
 

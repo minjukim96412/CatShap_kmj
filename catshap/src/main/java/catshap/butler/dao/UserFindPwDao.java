@@ -54,7 +54,7 @@ public class UserFindPwDao implements UserFindPwInterface {
 			
 			// 인증코드 객체 저장
 			UserAuthcode userAuthcode = new UserAuthcode(getUser.getUserNo(), getUser.getUsid(),
-					Integer.parseInt(uauthCode), new Timestamp(System.currentTimeMillis()));
+					uauthCode, new Timestamp(System.currentTimeMillis()));
 			UserAuthcodeVerifyInterface uAuthcodeInterface = new UserAuthcodeVerifyDao();
 			uAuthcodeInterface.insertUserAuthcode(userAuthcode);
 			ss.close();

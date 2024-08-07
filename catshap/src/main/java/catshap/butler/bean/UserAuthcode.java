@@ -6,13 +6,13 @@ public class UserAuthcode {
 
 	private int userno;
 	private String usid;
-	private int uauthcode;
+	private String uauthcode;
 	private Timestamp uauthcoderegdate;
 
 	public UserAuthcode() {
 	}
 
-	public UserAuthcode(int userno, String usid, int uauthcode, Timestamp uauthcoderegdate) {
+	public UserAuthcode(int userno, String usid, String uauthcode, Timestamp uauthcoderegdate) {
 		super();
 		this.userno = userno;
 		this.usid = usid;
@@ -36,11 +36,11 @@ public class UserAuthcode {
 		this.usid = usid;
 	}
 
-	public int getUauthcode() {
+	public String getUauthcode() {
 		return uauthcode;
 	}
 
-	public void setUauthcode(int uauthcode) {
+	public void setUauthcode(String uauthcode) {
 		this.uauthcode = uauthcode;
 	}
 
