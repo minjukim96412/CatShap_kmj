@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.google.gson.JsonObject;
 
@@ -33,7 +32,6 @@ public class UserAuthcodeVerifyServlet extends HttpServlet {
         String inputAuthcode = request.getParameter("uauthcode");
         String usid = request.getParameter("usid");
         UserAuthcode userAuthcode =  userAuthcodeVerifyDao.getUserAuthcode(usid);
-        System.out.println(userAuthcode);
         String authcode = userAuthcode.getUauthcode();
         if (inputAuthcode.equals(authcode)) {
         	jsonResponse.addProperty("success", true);

@@ -13,4 +13,10 @@
 		where usid=#{usid}
 	</select>
 	
+	<update id="updateUserAuthcode" parameterType="UserAuthcode">
+		update userauthcode
+		set uauthcode=#{uauthcode}, uauthcoderegdate = CURRENT_TIMESTAMP
+		where userno=#{userno}
+	</update>
+	
 </mapper>

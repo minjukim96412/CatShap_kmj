@@ -8,4 +8,6 @@ public interface UserAuthcodeVerifyInterface {
 
 	public abstract UserAuthcode getUserAuthcode(String usid);
 	
+	public abstract int updateUserAuthcode(UserAuthcode userAuthcode);
+	
 }

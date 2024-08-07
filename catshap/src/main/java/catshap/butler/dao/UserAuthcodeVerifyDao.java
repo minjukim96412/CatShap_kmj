@@ -41,5 +41,14 @@ public class UserAuthcodeVerifyDao implements UserAuthcodeVerifyInterface {
 		ss.close();
 		return userAuthcode;
 	}
+	
+	@Override
+	public int updateUserAuthcode(UserAuthcode userAuthcode) {
+		SqlSession ss = ssf.openSession();
+		int result = ss.insert("userauthcode.updateUserAuthcode", userAuthcode);
+		ss.commit();
+		ss.close();
+		return result;
+	}
 
 }
