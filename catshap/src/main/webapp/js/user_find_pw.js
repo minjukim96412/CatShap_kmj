@@ -3,7 +3,29 @@ $(function () {
         e.preventDefault();
 
         if (validate()) {
-        	console.log("모든 입력이 유효합니다!");
+        	const uname = $('#uname').val().trim();
+        	const usid = $('#usid').val().trim();
+            const email = $('#email').val().trim();
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8888/catshap/user-pw-recovery',
+                data: {
+                    uname: uname,
+                    usid: usid,
+                    email: email
+                },
+                success: function (response) {
+                    if (response.success) {
+                        window.location.href = 'user_find_pw_ok.jsp';
+                    } else {
+                        alert("올바르지 않은 계정입니다.");
+                    }
+                },
+                error: function () {
+                    alert('서버 오류가 발생했습니다.');
+                }
+            });
         }
     });
 });

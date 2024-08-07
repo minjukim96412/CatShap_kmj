@@ -46,7 +46,7 @@
 				    %>
                 </div>
                 <div class="findPwBtnDiv">
-                    <button id="toLoginBtn" class="toLoginBtn">비밀번호 찾으러 가기</button>
+                    <button id="toLoginBtn" class="toLoginBtn">로그인하러 가기</button>
                     <button id="toMainBtn" class="toMainBtn">메인화면으로 이동</button>
                 </div>
             </div>
