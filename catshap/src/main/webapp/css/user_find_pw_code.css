@@ -30,6 +30,7 @@
 .authcode-input-container {
     align-self: stretch;
     padding: 0 0 0 var(--padding-11xs);
+    display: flex;
 }
 
 .label-input-authcode {
@@ -51,6 +52,7 @@
     min-width: 240px;
 }
 
+.verifyAuthcodeBtn,
 .tryAuthcodeBtn,
 .cancelFindPwBtn {
     padding: 15px;
@@ -63,6 +65,12 @@
     border: white;
     border-radius: var(--br-10xs);
     font-size: var(--font-size-sm);
+}
+
+.verifyAuthcodeBtn {
+	background-color: #31caae;
+	color: #fff;
+	margin-left: 10px;
 }
 
 .tryAuthcodeBtn {
@@ -83,6 +91,7 @@
 }
 
 .error-message {
+	display: flex;
     color: red;
     margin-top: 4px;
     font-size: var(--font-size-xs);

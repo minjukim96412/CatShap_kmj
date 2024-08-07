@@ -9,7 +9,8 @@ const regex = {
     umailAddress: /^\d{5}$/, // 우편번호
     address: /.+/, // 주소
     detailAddress: /.+/, // 상세주소
-    mktAgree: /.+/ // 마케팅 동의
+    mktAgree: /.+/, // 마케팅 동의
+    uauthcode: /^\d{6}$/ // 비밀번호 찾기 인증코드
 };
 
 // 입력여부 확인 함수
