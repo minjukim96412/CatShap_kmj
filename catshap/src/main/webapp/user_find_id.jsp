@@ -51,7 +51,7 @@
                         </div>
                         <div class="findIdBtnDiv">
                             <button id="findIdBtn" class="findIdBtn">아이디 찾기</button>
-                            <button id="cancelFindIdBtn" class="cancelFindIdBtn">취소</button>
+                            <button id="cancelFindIdBtn" class="cancelFindIdBtn" type="button">취소</button>
                         </div>
                     </div>
                 </form>

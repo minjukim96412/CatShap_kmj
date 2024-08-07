@@ -52,7 +52,7 @@
                         </div>
                         <div class="findPwBtnDiv">
                             <button id="findPwBtn" class="findPwBtn">비밀번호 찾기</button>
-                            <button id="cancelFindPwBtn" class="cancelFindPwBtn">취소</button>
+                            <button id="cancelFindPwBtn" class="cancelFindPwBtn" type="button">취소</button>
                         </div>
                     </div>
                 </form>

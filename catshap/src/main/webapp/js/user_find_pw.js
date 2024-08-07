@@ -28,6 +28,10 @@ $(function () {
             });
         }
     });
+    $('#cancelFindPwBtn').on('click', (e) => {
+		e.preventDefault();
+		window.location.href = 'user_login.jsp';
+	});
 });
 
 // 유효성 검사 함수
