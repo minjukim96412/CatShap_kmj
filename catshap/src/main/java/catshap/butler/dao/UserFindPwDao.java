@@ -39,28 +39,30 @@ public class UserFindPwDao implements UserFindPwInterface {
 		Users getUser = ss.selectOne("user.getUser", user);
 		if (getUser != null) {
 			String uauthCode = generateAuthCode();
-			String subject = "귀하의 인증 코드";
-			String message = String.format(
-					"%s님,\n\n" + "귀하의 이메일 주소를 통해 계정 %s에 대한 액세스가 요청되었습니다. " + "인증 코드는 다음과 같습니다.\n\n" + "%s\n\n"
-							+ "이 코드를 요청하지 않았다면 다른 사람이 계정 %s에 액세스하려고 시도하는 것일 수 있습니다. "
-							+ "누구에게도 이 코드를 전달하거나 제공하면 안됩니다.\n\n" + "감사합니다.\n\n" + "Catshap 계정팀",
-					getUser.getUname(), getUser.getEmail(), uauthCode, getUser.getEmail());
-
-			try {
-				EmailUtil.sendEmail(getUser.getEmail(), subject, message);
-			} catch (MessagingException me) {
-				me.printStackTrace();
-			}
-			
+			// 인증코드 메일 전송
+			sendAuthcodeEmail(getUser, uauthCode);
 			// 인증코드 객체 저장
-			UserAuthcode userAuthcode = new UserAuthcode(getUser.getUserNo(), getUser.getUsid(),
-					uauthCode, new Timestamp(System.currentTimeMillis()));
-			UserAuthcodeVerifyInterface uAuthcodeInterface = new UserAuthcodeVerifyDao();
-			uAuthcodeInterface.insertUserAuthcode(userAuthcode);
+			setUserAuthcode(getUser, uauthCode);
+
 			ss.close();
-			return getUser.getUpass();			
+			return getUser.getUpass();
 		}
 		return null;
+	}
+
+	// 인증번호 메일 전송 메서드
+	private void sendAuthcodeEmail(Users user, String uauthCode) {
+		String subject = "귀하의 인증 코드";
+		String message = String.format("%s님,\n\n" + "귀하의 이메일 주소를 통해 계정 %s에 대한 액세스가 요청되었습니다. " + "인증 코드는 다음과 같습니다.\n\n"
+				+ "%s\n\n" + "이 코드를 요청하지 않았다면 다른 사람이 계정 %s에 액세스하려고 시도하는 것일 수 있습니다. "
+				+ "누구에게도 이 코드를 전달하거나 제공하면 안됩니다.\n\n" + "감사합니다.\n\n" + "Catshap 계정팀", user.getUname(), user.getEmail(),
+				uauthCode, user.getEmail());
+
+		try {
+			EmailUtil.sendEmail(user.getEmail(), subject, message);
+		} catch (MessagingException me) {
+			me.printStackTrace();
+		}
 	}
 
 	// 인증 코드 생성 메서드
@@ -68,6 +70,14 @@ public class UserFindPwDao implements UserFindPwInterface {
 		Random random = new Random();
 		int code = 100000 + random.nextInt(900000); // 6자리 인증 코드 생성
 		return String.valueOf(code);
+	}
+
+	// 인증 코드 객체 저장 메서드
+	private void setUserAuthcode(Users user, String uauthCode) {
+		UserAuthcode userAuthcode = new UserAuthcode(user.getUserNo(), user.getUsid(), uauthCode,
+				new Timestamp(System.currentTimeMillis()));
+		UserAuthcodeVerifyInterface uAuthcodeInterface = new UserAuthcodeVerifyDao();
+		uAuthcodeInterface.insertUserAuthcode(userAuthcode);
 	}
 
 }
