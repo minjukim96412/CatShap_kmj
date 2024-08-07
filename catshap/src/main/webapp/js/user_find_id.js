@@ -8,7 +8,7 @@ $(function () {
 
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:8888/catshap/userFindId',
+                url: 'http://localhost:8888/catshap/user-id-recovery',
                 data: {
                     uname: uname,
                     email: email

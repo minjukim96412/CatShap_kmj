@@ -16,7 +16,7 @@ import com.google.gson.JsonObject;
 import catshap.butler.bean.Users;
 import catshap.butler.dao.UserFindIdDao;
 
-@WebServlet("/userFindId")
+@WebServlet("/user-id-recovery")
 public class UserFindIdServlet extends HttpServlet {
 
 	private UserFindIdDao userFindIdDao;

@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="/userFindId" method="post">
+                <form action="/user-id-recovery" method="post">
                     <div class="input-fields-parent">
                         <div class="input-fields">
                             <div class="find-input">
