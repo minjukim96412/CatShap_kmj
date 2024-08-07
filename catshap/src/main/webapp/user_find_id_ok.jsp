@@ -32,7 +32,18 @@
                     </div>
                 </div>
                 <div class="login-success">
-				    <h1>사용자 아이디 찾기 성공 화면!!</h1>
+				     <% 
+					    HttpSession sessions = request.getSession(false);
+				        Users user = (Users)(sessions != null ? sessions.getAttribute("user") : null);
+	
+				        if (user != null) {
+				            out.print("<p>" + user.getUname() + "님의 아이디</p>");
+				            out.print("<h1>" + user.getUsid() + "</h1>");
+				            session.invalidate();
+				        } else {
+				            out.println("<p>사용자 정보가 없습니다.</p>");
+				        }
+				    %>
                 </div>
                 <div class="findIdBtnDiv">
                     <button id="toLoginBtn" class="toLoginBtn">로그인하러 가기</button>
