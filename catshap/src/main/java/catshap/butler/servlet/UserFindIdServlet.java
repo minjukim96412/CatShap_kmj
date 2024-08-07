@@ -50,7 +50,7 @@ public class UserFindIdServlet extends HttpServlet {
 			} else {
 				jsonResponse.addProperty("success", false);
 			}
-			response.setContentType("application/json charset=UTF-8");
+			response.setContentType("application/json; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.print(jsonResponse.toString());
 			out.flush();	
