@@ -6,4 +6,6 @@ public interface UserAuthcodeVerifyInterface {
 
 	public abstract int insertUserAuthcode(UserAuthcode userAuthcode); // 비밀번호 찾기 인증코드 추가
 
+	public abstract UserAuthcode getUserAuthcode(String usid);
+	
 }

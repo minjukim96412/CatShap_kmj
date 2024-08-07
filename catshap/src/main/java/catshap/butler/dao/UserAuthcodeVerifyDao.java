@@ -32,5 +32,14 @@ public class UserAuthcodeVerifyDao implements UserAuthcodeVerifyInterface {
 		ss.close();
 		return result;
 	}
+	
+	@Override
+	public UserAuthcode getUserAuthcode(String usid) {
+		SqlSession ss = ssf.openSession();
+		UserAuthcode userAuthcode = ss.selectOne("userauthcode.getUserAuthcode", usid);
+		System.out.println(userAuthcode);
+		ss.close();
+		return userAuthcode;
+	}
 
 }

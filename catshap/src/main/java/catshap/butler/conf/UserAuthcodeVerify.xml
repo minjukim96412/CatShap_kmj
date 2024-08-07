@@ -7,4 +7,10 @@
 		values (#{userno}, #{usid}, #{uautocode}, sysdate)
 	</insert>
 
+	<select id="getUserAuthcode" parameterType="String" resultType="UserAuthcode">
+		select *
+		from userauthcode
+		where usid=#{usid}
+	</select>
+	
 </mapper>
