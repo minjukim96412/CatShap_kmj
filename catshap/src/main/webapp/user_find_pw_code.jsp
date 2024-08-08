@@ -58,8 +58,8 @@
                   <p id="uauthcode-error" class="error-message" style="display: none;"></p>
                 </form>
                 <div class="findPwBtnDiv">
-                    <button id="user_try_pw_code" class="tryAuthcodeBtn">인증코드 다시받기</button>
-                    <button id="user_cancel" class="cancelFindPwBtn">취소</button>
+                    <button id="userTryPwcodeBtn" class="tryAuthcodeBtn">인증코드 다시받기</button>
+                    <button id="userCancelBtn" class="cancelFindPwBtn">취소</button>
                 </div>
             </div>
         </section>

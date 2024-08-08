@@ -1,16 +1,16 @@
 $(function() {
 	// 로그인의 아이디 찾기 버튼 클릭한 경우
-	$('#user_login_find_id').on('click', () => {
+	$('#userLoginFindIdBtn').on('click', () => {
 		window.location.href = 'user_find_id.jsp';
 	});
 
 	// 로그인의 비밀번호 찾기 버튼 클릭한 경우
-	$('#user_login_find_pass').on('click', () => {
+	$('#userLoginFindPassBtn').on('click', () => {
 		window.location.href = 'user_find_pw.jsp';
 	});
 
 	// 아이다 찾기의 아이디 찾기 버튼 클릭한 경우
-	$('#user_find_id').on('click', (e) => {
+	$('#userFindIdBtn').on('click', (e) => {
 		e.preventDefault();
 
 		if (validateUname() && validateEmail()) {
@@ -39,7 +39,7 @@ $(function() {
 	});
 
 	// 비밀번호 찾기의 비밀번호 찾기 버튼을 클릭한 경우
-	$('#user_find_pw').on('click', (e) => {
+	$('#userFindPwBtn').on('click', (e) => {
 		e.preventDefault();
 
 		if (validateUname() && validateUsid() && validateEmail()) {
@@ -100,7 +100,7 @@ $(function() {
 	});
 
 	// 비밀번호 찾기의 인증코드 다시받기 버튼 클릭한 경우
-	$('#user_try_pw_code').on('click', () => {
+	$('#userTryPwcodeBtn').on('click', () => {
 		const user = JSON.parse(sessionStorage.getItem('user'));
 		$.ajax({
 			type: 'POST',
@@ -124,7 +124,7 @@ $(function() {
 	});
 
 	// 비밀번호 변경의 비밀번호 변경 버튼 클릭한 경우
-	$('#user_change_pw').on('click', (e) => {
+	$('#userChangePwBtn').on('click', (e) => {
 		e.preventDefault();
 
 		const upass = $('#upass').val().trim();
@@ -154,18 +154,18 @@ $(function() {
 	});
 
 	// 취소 버튼을 클릭한 경우
-	$('#user_cancel').on('click', (e) => {
+	$('#userCancelBtn').on('click', (e) => {
 		e.preventDefault();
 		window.location.href = 'user_login.jsp';
 	});
 
 	// 로그인하러 가기 버튼 클릭 시
-	$('#to-login-btn').on('click', () => {
+	$('#toLoginBtn').on('click', () => {
 		window.location.href = 'user_login.jsp';
 	});
 
 	// 메인화면으로 이동 버튼 클릭 시
-	$('#to-main-btn').on('click', () => {
+	$('#toMainBtn').on('click', () => {
 		window.location.href = 'main.jsp';
 	});
 

@@ -5,9 +5,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1, width=device-width" />
-  <link rel="stylesheet" href="./css/user_login.css" />
+  <link rel="stylesheet" href="./css/user.css" />
   <link rel="stylesheet" href="./css/global.css" />
-  <link rel="stylesheet" href="./css/main.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="./js/user.js"></script>
 </head>
@@ -50,9 +49,9 @@
         </form>
         <div class="find-login-wrapper">
           <div class="find-login">
-            <div class="userFindId" id="user_login_find_id">아이디 찾기</div>
-            <div class="userFindPw" id="user_login_find_pass">비밀번호 찾기</div>
-            <div class="userSignUp" id="user_login_signup">회원가입</div>
+            <div class="userFindId" id="userLoginFindIdBtn">아이디 찾기</div>
+            <div class="userFindPw" id="userLoginFindPassBtn">비밀번호 찾기</div>
+            <div class="userSignUp" id="userLoginSignupBtn">회원가입</div>
           </div>
         </div>
       </div>

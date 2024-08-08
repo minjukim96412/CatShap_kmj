@@ -54,8 +54,8 @@
                             </div>
                         </div>
                         <div class="findPwBtnDiv">
-                            <button id="user_find_pw" class="findPwBtn">비밀번호 찾기</button>
-                            <button id="user_cancel" class="cancelFindPwBtn" type="button">취소</button>
+                            <button id="userFindPwBtn" class="findPwBtn">비밀번호 찾기</button>
+                            <button id="userCancelBtn" class="cancelFindPwBtn" type="button">취소</button>
                         </div>
                     </div>
                 </form>

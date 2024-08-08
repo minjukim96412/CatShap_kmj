@@ -50,8 +50,8 @@
                             </div>
                         </div>
                         <div class="changePwBtnDiv">
-                            <button id="user_change_pw" class="changePwBtn" type="submit">비밀번호 변경</button>
-                            <button id="user_cancel" class="cancelFindIdBtn" type="button">취소</button>
+                            <button id="userChangePwBtn" class="changePwBtn" type="submit">비밀번호 변경</button>
+                            <button id="userCancelBtn" class="cancelFindIdBtn" type="button">취소</button>
                         </div>
                     </div>
                 </form>

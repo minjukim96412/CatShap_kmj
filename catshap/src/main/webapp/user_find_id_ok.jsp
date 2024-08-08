@@ -47,8 +47,8 @@
 				    %>
                 </div>
                 <div class="findIdBtnDiv">
-                    <button id="to-login-btn" class="toLoginBtn">로그인하러 가기</button>
-                    <button id="to-main-btn" class="toMainBtn">메인화면으로 이동</button>
+                    <button id="toLoginBtn" class="toLoginBtn">로그인하러 가기</button>
+                    <button id="toMainBtn" class="toMainBtn">메인화면으로 이동</button>
                 </div>
             </div>
         </section>

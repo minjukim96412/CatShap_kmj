@@ -50,8 +50,8 @@
                             </div>
                         </div>
                         <div class="findIdBtnDiv">
-                            <button id="user_find_id" class="findIdBtn">아이디 찾기</button>
-                            <button id="user_cancel" class="cancelFindIdBtn" type="button">취소</button>
+                            <button id="userFindIdBtn" class="findIdBtn">아이디 찾기</button>
+                            <button id="userCancelBtn" class="cancelFindIdBtn" type="button">취소</button>
                         </div>
                     </div>
                 </form>
