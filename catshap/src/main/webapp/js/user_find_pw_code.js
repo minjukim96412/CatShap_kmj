@@ -6,9 +6,6 @@ $(function() {
 
 		const uauthcode = $('#uauthcode').val().trim();
 		const user = JSON.parse(sessionStorage.getItem('user'));
-		console.log(uauthcode);
-		console.log(user);
-		console.log("전달!");
 		if(validate(uauthcode)) {
 			$.ajax({
 			type: 'POST',
@@ -19,9 +16,10 @@ $(function() {
 			},
 			success: function(response) {
 				if (response.success) {
-					alert("인증코드가 일치합니다!");
+					$('#uauthcode-error').hide();
+					window.location.href = 'user_change_pw.jsp';
 				} else {
-					alert("인증코드 불일치합니다! 다시 입력해주세요.");
+					$('#uauthcode-error').text("인증코드 불일치합니다! 다시 입력해주세요.").show();
 				}
 			},
 			error: function() {
