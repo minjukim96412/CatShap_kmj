@@ -8,10 +8,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <link rel="stylesheet" href="./css/user_find_pw.css" />
-    <link rel="stylesheet" href="./css/user_find.css" />
+    <link rel="stylesheet" href="./css/user.css" />
     <link rel="stylesheet" href="./css/global.css" />
-    <link rel="stylesheet" href="./css/main.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script src="./js/user_regex.js"></script>
 	<script src="./js/user.js"></script>
