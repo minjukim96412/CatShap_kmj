@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./css/user.css" />
   <link rel="stylesheet" href="./css/global.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="./js/user_regex.js"></script>
   <script src="./js/user.js"></script>
 </head>
 <body>
@@ -37,13 +38,15 @@
                 <div class="password-input">
                   <div class="password-input-container">
                     <input id="usid" class="label-input-id" placeholder="ID" type="text" />
+	                <p id="usid-error" class="error-message" style="display: none;"></p>
                   </div>
                   <input id="upass" class="label-input-pw" placeholder="PASSWORD" type="password" />
+                  <p id="upass-error" class="error-message" style="display: none;"></p>
                 </div>
               </div>
             </div>
             <div class="loginBtnDiv">
-              <button id="loginBtn" class="loginBtn">LOGIN</button>
+              <button id="userLoginBtn" type="submit" class="loginBtn">LOGIN</button>
             </div>
           </div>
         </form>

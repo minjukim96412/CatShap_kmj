@@ -1,4 +1,17 @@
 $(function() {
+	
+	// 로그인 버튼 클릭한 경우
+	$("#userLoginBtn").on('click', (e) => {
+		e.preventDefault();
+		
+		const isUsidValid = validateUsid();
+		const isUpassValid = validatePassword();
+		if (isUsidValid && isUpassValid) {
+			alert('유효한 값입니다!');
+		}
+		
+	});
+	
 	// 로그인의 아이디 찾기 버튼 클릭한 경우
 	$('#userLoginFindIdBtn').on('click', () => {
 		window.location.href = 'user_find_id.jsp';
