@@ -12,8 +12,10 @@ $(function() {
 	// 아이다 찾기의 아이디 찾기 버튼 클릭한 경우
 	$('#userFindIdBtn').on('click', (e) => {
 		e.preventDefault();
-
-		if (validateUname() && validateEmail()) {
+		
+		const isUnameValid = validateUname();
+		const isEmailValid = validateEmail();
+		if (isUnameValid && isEmailValid) {
 			const uname = $('#uname').val().trim();
 			const email = $('#email').val().trim();
 
@@ -42,7 +44,11 @@ $(function() {
 	$('#userFindPwBtn').on('click', (e) => {
 		e.preventDefault();
 
-		if (validateUname() && validateUsid() && validateEmail()) {
+		const isUnameValid = validateUname();
+		const isUsidValid = validateUsid();
+		const isEmailValid = validateEmail();
+		
+		if (isUnameValid && isUsidValid && isEmailValid) {
 			const uname = $('#uname').val().trim();
 			const usid = $('#usid').val().trim();
 			const email = $('#email').val().trim();
@@ -130,7 +136,9 @@ $(function() {
 		const upass = $('#upass').val().trim();
 		const upassConfirm = $('#upassConfirm').val().trim();
 		const user = JSON.parse(sessionStorage.getItem('user'));
-		if (validatePassword() && equalPassword(upass, upassConfirm)) {
+		const isPasswordValid = validatePassword();
+		const isEequalPassword = equalPassword(upass, upassConfirm);
+		if (isPasswordValid && isEequalPassword) {
 			$.ajax({
 				type: 'POST',
 				url: 'http://localhost:8888/catshap/user-pass-change',
