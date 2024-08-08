@@ -12,16 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.JsonObject;
 
 import catshap.butler.bean.UserAuthcode;
-import catshap.butler.dao.UserAuthcodeVerifyDao;
+import catshap.butler.dao.UserDao;
+import catshap.butler.interfaces.UserInterface;
 
 @WebServlet("/user-authcode-verify")
 public class UserAuthcodeVerifyServlet extends HttpServlet {
 
-	private UserAuthcodeVerifyDao userAuthcodeVerifyDao;
+	private UserInterface userDao;
 	
 	@Override
 	public void init() throws ServletException {
-		userAuthcodeVerifyDao = new UserAuthcodeVerifyDao();
+		userDao = new UserDao();
 	}
 	
 	@Override
@@ -31,7 +32,7 @@ public class UserAuthcodeVerifyServlet extends HttpServlet {
 		
         String inputAuthcode = request.getParameter("uauthcode");
         String usid = request.getParameter("usid");
-        UserAuthcode userAuthcode =  userAuthcodeVerifyDao.getUserAuthcode(usid);
+        UserAuthcode userAuthcode =  userDao.getUserAuthcode(usid);
         String authcode = userAuthcode.getUauthcode();
         if (inputAuthcode.equals(authcode)) {
         	jsonResponse.addProperty("success", true);

@@ -14,16 +14,17 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.JsonObject;
 
 import catshap.butler.bean.Users;
-import catshap.butler.dao.UserFindPwDao;
+import catshap.butler.dao.UserDao;
+import catshap.butler.interfaces.UserInterface;
 
 @WebServlet("/user-pw-recovery")
 public class UserFindPwServlet extends HttpServlet {
 
-	private UserFindPwDao userFindPwDao;
+	private UserInterface userDao;
 
 	@Override
 	public void init() throws ServletException {
-		userFindPwDao = new UserFindPwDao();
+		userDao = new UserDao();
 	}
 
 	@Override
@@ -37,7 +38,7 @@ public class UserFindPwServlet extends HttpServlet {
 		JsonObject jsonResponse = new JsonObject();
 		
 		try {
-			String upass = userFindPwDao.getUserPw(user);
+			String upass = userDao.getUserPw(user);
 			user.setUpass(upass);
 			
 			HttpSession session = request.getSession();

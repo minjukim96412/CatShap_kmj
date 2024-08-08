@@ -15,11 +15,10 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import catshap.butler.bean.UserAuthcode;
 import catshap.butler.bean.Users;
-import catshap.butler.interfaces.UserAuthcodeVerifyInterface;
-import catshap.butler.interfaces.UserFindPwInterface;
+import catshap.butler.interfaces.UserInterface;
 import catshap.butler.util.EmailUtil;
 
-public class UserFindPwDao implements UserFindPwInterface {
+public class UserDao implements UserInterface {
 
 	private static Reader reader = null;
 	private static SqlSessionFactory ssf = null;
@@ -31,6 +30,14 @@ public class UserFindPwDao implements UserFindPwInterface {
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
+	}
+
+	@Override
+	public String getUserId(Users user) throws SQLException {
+		SqlSession ss = ssf.openSession();
+		String usid = ss.selectOne("user.getUserId", user);
+		ss.close();
+		return usid;
 	}
 
 	@Override
@@ -48,6 +55,41 @@ public class UserFindPwDao implements UserFindPwInterface {
 			return getUser.getUpass();
 		}
 		return null;
+	}
+
+	@Override
+	public int updateUserPw(Users user) throws SQLException {
+		SqlSession ss = ssf.openSession();
+		int result = ss.insert("user.updateUserPw", user);
+		ss.commit();
+		ss.close();
+		return result;
+	}
+
+	@Override
+	public int insertUserAuthcode(UserAuthcode userAuthcode) {
+		SqlSession ss = ssf.openSession();
+		int result = ss.insert("userauthcode.insertUserAuthcode", userAuthcode);
+		ss.commit();
+		ss.close();
+		return result;
+	}
+
+	@Override
+	public UserAuthcode getUserAuthcode(String usid) {
+		SqlSession ss = ssf.openSession();
+		UserAuthcode userAuthcode = ss.selectOne("userauthcode.getUserAuthcode", usid);
+		ss.close();
+		return userAuthcode;
+	}
+
+	@Override
+	public int updateUserAuthcode(UserAuthcode userAuthcode) {
+		SqlSession ss = ssf.openSession();
+		int result = ss.insert("userauthcode.updateUserAuthcode", userAuthcode);
+		ss.commit();
+		ss.close();
+		return result;
 	}
 
 	// 인증번호 메일 전송 메서드
@@ -74,15 +116,14 @@ public class UserFindPwDao implements UserFindPwInterface {
 
 	// 인증 코드 객체 저장 메서드
 	private void setUserAuthcode(Users user, String uauthCode) {
-		UserAuthcodeVerifyInterface uAuthcodeInterface = new UserAuthcodeVerifyDao();
-		UserAuthcode existingAuthcode = uAuthcodeInterface.getUserAuthcode(user.getUsid());
+		UserAuthcode existingAuthcode = getUserAuthcode(user.getUsid());
 		UserAuthcode userAuthcode = new UserAuthcode(user.getUserNo(), user.getUsid(), uauthCode,
 				new Timestamp(System.currentTimeMillis()));
 
 		if (existingAuthcode != null) {
-			uAuthcodeInterface.updateUserAuthcode(userAuthcode);
+			updateUserAuthcode(userAuthcode);
 		} else {
-			uAuthcodeInterface.insertUserAuthcode(userAuthcode);
+			insertUserAuthcode(userAuthcode);
 		}
 	}
 

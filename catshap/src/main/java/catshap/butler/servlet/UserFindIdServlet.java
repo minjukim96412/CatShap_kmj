@@ -14,16 +14,17 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.JsonObject;
 
 import catshap.butler.bean.Users;
-import catshap.butler.dao.UserFindIdDao;
+import catshap.butler.dao.UserDao;
+import catshap.butler.interfaces.UserInterface;
 
 @WebServlet("/user-id-recovery")
 public class UserFindIdServlet extends HttpServlet {
 
-	private UserFindIdDao userFindIdDao;
+	private UserInterface userFindIdDao;
 
 	@Override
 	public void init() throws ServletException {
-		userFindIdDao = new UserFindIdDao();
+		userFindIdDao = new UserDao();
 	}
 
 	@Override

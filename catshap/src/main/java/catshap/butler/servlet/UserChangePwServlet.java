@@ -13,16 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.JsonObject;
 
 import catshap.butler.bean.Users;
-import catshap.butler.dao.UserChangePwDao;
+import catshap.butler.dao.UserDao;
+import catshap.butler.interfaces.UserInterface;
 
 @WebServlet("/user-pass-change")
 public class UserChangePwServlet extends HttpServlet {
 
-	private UserChangePwDao userChangePwDao;
+	private UserInterface userDao;
 	
 	@Override
 	public void init() throws ServletException {
-		userChangePwDao = new UserChangePwDao();
+		userDao = new UserDao();
 	}
 	
 	@Override
@@ -33,7 +34,7 @@ public class UserChangePwServlet extends HttpServlet {
 		
 		JsonObject jsonResponse = new JsonObject();	
 		try {
-			int result = userChangePwDao.updateUserPw(user);
+			int result = userDao.updateUserPw(user);
 			jsonResponse = new JsonObject();
 			if (result > 0) {
 				jsonResponse.addProperty("success", true);
