@@ -15,6 +15,7 @@
 		from users
 		where uname=#{uname}
 		and email=#{email}
+		and ustatus='Y'
 	</select>
 	
 	<select id="getUserPw" parameterType="Users" resultType="Users">
@@ -23,6 +24,7 @@
 		where uname=#{uname}
 		and usid=#{usid}
 		and email=#{email}
+		and ustatus='Y'
 	</select>
 	
 	<update id="updateUserPw" parameterType="Users">
