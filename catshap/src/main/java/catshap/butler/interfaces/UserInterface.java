@@ -7,6 +7,8 @@ import catshap.butler.bean.Users;
 
 public interface UserInterface {
 
+	public abstract Users getUser(Users user) throws SQLException; // 사용자 조회 - 로그인
+	
 	public abstract String getUserId(Users user) throws SQLException; // 사용자 조회 - 아이디 찾기
 	
 	public abstract String getUserPw(Users user) throws SQLException; // 사용자 조회 - 비밀번호 찾기

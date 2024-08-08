@@ -31,6 +31,14 @@ public class UserDao implements UserInterface {
 			ioe.printStackTrace();
 		}
 	}
+	
+	@Override
+	public Users getUser(Users user) throws SQLException {
+		SqlSession ss = ssf.openSession();
+		Users getUser = ss.selectOne("user.getUser", user);
+		ss.close();
+		return getUser;
+	}
 
 	@Override
 	public String getUserId(Users user) throws SQLException {
@@ -43,7 +51,7 @@ public class UserDao implements UserInterface {
 	@Override
 	public String getUserPw(Users user) throws SQLException {
 		SqlSession ss = ssf.openSession();
-		Users getUser = ss.selectOne("user.getUser", user);
+		Users getUser = ss.selectOne("user.getUserPw", user);
 		if (getUser != null) {
 			String uauthCode = generateAuthCode();
 			// 인증코드 메일 전송

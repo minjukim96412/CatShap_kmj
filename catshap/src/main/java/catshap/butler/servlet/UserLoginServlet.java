@@ -17,8 +17,8 @@ import catshap.butler.bean.Users;
 import catshap.butler.dao.UserDao;
 import catshap.butler.interfaces.UserInterface;
 
-@WebServlet("/user-id-recovery")
-public class UserFindIdServlet extends HttpServlet {
+@WebServlet("/login")
+public class UserLoginServlet extends HttpServlet {
 
 	private UserInterface userDao;
 
@@ -31,23 +31,20 @@ public class UserFindIdServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Users user = new Users();
-		user.setUname(request.getParameter("uname"));
-		user.setEmail(request.getParameter("email"));
+		user.setUsid(request.getParameter("usid"));
+		user.setUpass(request.getParameter("upass"));
 		
 		JsonObject jsonResponse = new JsonObject();
 		
 		try {
-			String usid = userDao.getUserId(user);
-			user.setUsid(usid);
+			user = userDao.getUser(user);
 			
 			HttpSession session = request.getSession();
-			if (usid != null) {
+			if (user != null) {
 				session.setAttribute("user", user);
 	            
 				jsonResponse.addProperty("success", true);
 				jsonResponse.addProperty("uname", user.getUname());
-                jsonResponse.addProperty("email", user.getEmail());
-                jsonResponse.addProperty("usid", usid);
 			} else {
 				jsonResponse.addProperty("success", false);
 			}

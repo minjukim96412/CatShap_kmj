@@ -7,7 +7,28 @@ $(function() {
 		const isUsidValid = validateUsid();
 		const isUpassValid = validatePassword();
 		if (isUsidValid && isUpassValid) {
-			alert('유효한 값입니다!');
+			const usid = $('#usid').val().trim();
+			const upass = $('#upass').val().trim();
+			
+			$.ajax({
+				type: 'POST',
+				url: 'http://localhost:8888/catshap/login',
+				data: {
+					usid: usid,
+					upass: upass
+				},
+				success: function(response) {
+					if (response.success) {
+						alert(response.uname + '님 환영합니다.');
+						window.location.href = 'main.jsp';
+					} else {
+						alert("로그인 실패... 정보를 확인해주세요.");
+					}
+				},
+				error: function() {
+					alert('서버 오류가 발생했습니다.');
+				}
+			});
 		}
 		
 	});
