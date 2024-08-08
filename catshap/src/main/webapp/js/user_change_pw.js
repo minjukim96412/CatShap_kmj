@@ -1,9 +1,30 @@
 $(function() {
 	$('#changePwBtn').on('click', (e) => {
 		e.preventDefault();
-
-		if (validate() && equalPassword()) {
-			console.log('비밀번호 변경 시작!');
+		
+		const upass = $('#upass').val().trim();
+		const upassConfirm = $('#upassConfirm').val().trim();
+		const user = JSON.parse(sessionStorage.getItem('user'));
+		if (validate() && equalPassword(upass, upassConfirm)) {
+			 $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8888/catshap/user-pass-change',
+                data: {
+					usid: user.usid,
+                   	upass: upass
+                },
+                success: function (response) {
+					console.log(response);
+                    if (response.success) {
+                        window.location.href = 'user_change_pw_ok.jsp';
+                    } else {
+						alert('비밀번호 변경 실패...');
+					}
+                },
+                error: function () {
+                    alert('서버 오류가 발생했습니다.');
+                }
+            });
 		}
 	});
 
@@ -22,10 +43,7 @@ const validate = () => {
 }
 
 // 비밀번호 일치 여부 확인 함수
-const equalPassword = () => {
-	const upass = $('#upass').val().trim();
-	const upassConfirm = $('#upassConfirm').val().trim();
-	
+const equalPassword = (upass, upassConfirm) => {
 	if (upass !== upassConfirm) {
 		$('#upassConfirm-error').text("비밀번호가 일치하지 않습니다.").show();
 		return false;

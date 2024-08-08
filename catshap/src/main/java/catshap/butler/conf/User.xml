@@ -17,4 +17,10 @@
 		and email=#{email}
 	</select>
 	
+	<update id="updateUserPw" parameterType="Users">
+		update users
+		set upass=#{upass}
+		where usid=#{usid}
+	</update>
+	
 </mapper>
