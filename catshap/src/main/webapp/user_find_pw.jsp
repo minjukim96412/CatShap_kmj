@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./css/main.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script src="./js/user_regex.js"></script>
-	<script src="./js/user_find_pw.js"></script>
+	<script src="./js/user.js"></script>
 </head>
 <body>
     <div class="login-desktop">
@@ -54,8 +54,8 @@
                             </div>
                         </div>
                         <div class="findPwBtnDiv">
-                            <button id="findPwBtn" class="findPwBtn">비밀번호 찾기</button>
-                            <button id="cancelFindPwBtn" class="cancelFindPwBtn" type="button">취소</button>
+                            <button id="user_find_pw" class="findPwBtn">비밀번호 찾기</button>
+                            <button id="user_cancel" class="cancelFindPwBtn" type="button">취소</button>
                         </div>
                     </div>
                 </form>

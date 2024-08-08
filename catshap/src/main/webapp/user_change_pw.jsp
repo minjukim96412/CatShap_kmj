@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./css/main.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script src="./js/user_regex.js"></script>
-	<script src="./js/user_change_pw.js"></script>
+	<script src="./js/user.js"></script>
 </head>
 <body>
     <div class="login-desktop">
@@ -50,8 +50,8 @@
                             </div>
                         </div>
                         <div class="changePwBtnDiv">
-                            <button id="changePwBtn" class="changePwBtn" type="submit">비밀번호 변경</button>
-                            <button id="cancelChangePwBtn" class="cancelFindIdBtn" type="button">취소</button>
+                            <button id="user_change_pw" class="changePwBtn" type="submit">비밀번호 변경</button>
+                            <button id="user_cancel" class="cancelFindIdBtn" type="button">취소</button>
                         </div>
                     </div>
                 </form>

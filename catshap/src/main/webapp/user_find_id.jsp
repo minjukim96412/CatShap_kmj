@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./css/main.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script src="./js/user_regex.js"></script>
-	<script src="./js/user_find_id.js"></script>
+	<script src="./js/user.js"></script>
 </head>
 <body>
     <div class="login-desktop">
@@ -50,8 +50,8 @@
                             </div>
                         </div>
                         <div class="findIdBtnDiv">
-                            <button id="findIdBtn" class="findIdBtn">아이디 찾기</button>
-                            <button id="cancelFindIdBtn" class="cancelFindIdBtn" type="button">취소</button>
+                            <button id="user_find_id" class="findIdBtn">아이디 찾기</button>
+                            <button id="user_cancel" class="cancelFindIdBtn" type="button">취소</button>
                         </div>
                     </div>
                 </form>

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./css/main.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script src="./js/user_regex.js"></script>
-	<script src="./js/user_find_pw_code.js"></script>
+	<script src="./js/user.js"></script>
 </head>
 
 <body>
@@ -53,13 +53,13 @@
                 <form action="/user-authcode-verify" method="post" class="authcode-input">
                   <div class="authcode-input-container">
                     <input id="uauthcode" class="label-input-authcode" placeholder="인증코드를 입력하세요." type="text" />
-                    <input id="verifyAuthcodeBtn" class="verifyAuthcodeBtn" type="submit" value="확인" />
+                    <input id="user_find_pw_code" class="verifyAuthcodeBtn" type="submit" value="확인" />
                   </div>
                   <p id="uauthcode-error" class="error-message" style="display: none;"></p>
                 </form>
                 <div class="findPwBtnDiv">
-                    <button id="tryAuthcodeBtn" class="tryAuthcodeBtn">인증코드 다시받기</button>
-                    <button id="cancelFindPwBtn" class="cancelFindPwBtn">취소</button>
+                    <button id="user_try_pw_code" class="tryAuthcodeBtn">인증코드 다시받기</button>
+                    <button id="user_cancel" class="cancelFindPwBtn">취소</button>
                 </div>
             </div>
         </section>
