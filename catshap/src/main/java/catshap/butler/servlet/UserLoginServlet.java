@@ -20,6 +20,8 @@ import catshap.butler.interfaces.UserInterface;
 @WebServlet("/login")
 public class UserLoginServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 115648641352156L;
+	
 	private UserInterface userDao;
 
 	@Override

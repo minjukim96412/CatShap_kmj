@@ -135,4 +135,29 @@ public class UserDao implements UserInterface {
 		}
 	}
 
+	@Override
+    public int registUser(Users users) throws SQLException {
+        try (SqlSession ss =  ssf.openSession()) {
+            int result = ss.insert("user.registUser", users);
+            ss.commit();
+            return result;
+        }
+    }
+
+    @Override
+    public boolean isUsidTaken(String usid) throws SQLException {
+        try (SqlSession ss =  ssf.openSession()) {
+            Integer count = ss.selectOne("user.isUsidTaken", usid);
+            return count != null && count > 0;
+        }
+    }
+
+    @Override
+    public boolean isUnickTaken(String unick) throws SQLException {
+        try (SqlSession ss =  ssf.openSession()) {
+            Integer count = ss.selectOne("user.isUnickTaken", unick);
+            return count != null && count > 0;
+        }
+    }
+	
 }
