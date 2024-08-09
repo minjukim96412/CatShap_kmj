@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<properties resource="conf/db.properties" />
+	<properties resource="catshap/butler/conf/db.properties" />
 	<typeAliases>
-
+		<typeAlias type="catshap.butler.bean.Grade" alias="Grade" />
+		<typeAlias type="catshap.butler.bean.Users" alias="Users" />
+		<typeAlias type="catshap.butler.bean.UserAuthcode" alias="UserAuthcode" />
 	</typeAliases>	
 	<environments default="development">
 		<environment id="development">
@@ -17,6 +19,7 @@
 		</environment>
 	</environments>
 	<mappers>
-
+		<mapper resource="catshap/butler/conf/User.xml"/>
+		<mapper resource="catshap/butler/conf/UserAuthcode.xml"/>
 	</mappers>
 </configuration>

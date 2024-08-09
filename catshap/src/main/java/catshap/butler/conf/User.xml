@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+	
+	<select id="getUser" parameterType="Users" resultType="Users">
+		select *
+		from users
+		where usid=#{usid}
+		and upass=#{upass}
+		and ustatus='Y'
+	</select>
+	
+	<select id="getUserId" parameterType="Users" resultType="string">
+		select usid
+		from users
+		where uname=#{uname}
+		and email=#{email}
+		and ustatus='Y'
+	</select>
+	
+	<select id="getUserPw" parameterType="Users" resultType="Users">
+		select *
+		from users
+		where uname=#{uname}
+		and usid=#{usid}
+		and email=#{email}
+		and ustatus='Y'
+	</select>
+	
+	<update id="updateUserPw" parameterType="Users">
+		update users
+		set upass=#{upass}
+		where usid=#{usid}
+	</update>
+	
+</mapper>
