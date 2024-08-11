@@ -47,6 +47,8 @@ public class UserLoginServlet extends HttpServlet {
 	            
 				jsonResponse.addProperty("success", true);
 				jsonResponse.addProperty("uname", user.getUname());
+				jsonResponse.addProperty("unick", user.getUnick());
+                
 			} else {
 				jsonResponse.addProperty("success", false);
 			}

@@ -159,5 +159,14 @@ public class UserDao implements UserInterface {
             return count != null && count > 0;
         }
     }
+    
+    @Override
+    public int updateUser(Users user) throws SQLException  {
+        try (SqlSession ss = ssf.openSession()) {
+            int result = ss.update("user.updateUser", user);
+            ss.commit();
+            return result;
+        }
+    }
 	
 }

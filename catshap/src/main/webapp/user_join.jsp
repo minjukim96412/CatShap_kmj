@@ -22,7 +22,7 @@
 <script src="./js/user.js"></script>
 <script src="./js/user_regex.js"></script>
 </head>
-<body>
+<body class="user_join">
 	<div class="div318">
 		<div class="auth-container-wrapper">
 			<div class="auth-container">
@@ -36,32 +36,32 @@
 				</div>
 				<div class="login-container">
 					<div class="link-wrapper4">
-						<img class="link-icon29" alt="" src="./common/join_link.svg" />
+						<img class="link-icon29" alt="" src="./image/join_link.svg" />
 					</div>
 					<div class="login-icon-container-parent">
 						<div class="login-icon-container">
-							<img class="link-icon29" alt="" src="./common/icon-13.svg" />
+							<img class="link-icon29" alt="" src="./image/join_icon1.svg" />
 						</div>
 						<div class="div327"><a href="user_login.jsp">로그인</a></div>
 					</div>
 					<div class="icon-wrapper21">
-						<img class="link-icon29" alt="" src="./common/icon-13.svg" />
+						<img class="link-icon29" alt="" src="./image/join_icon1.svg" />
 					</div>
 					<div class="div328">회원가입</div>
 				</div>
 			</div>
 		</div>
 		<section class="form-header">
-			<img class="separator-icon13" alt="" src="./common/join_separator.svg" />
+			<img class="join_separator1" alt="" src="./image/join_separator.svg" />
 			<h2 class="h21">
 				<span>
 					<p class="p14">아래 회원가입</p>
 					<p class="p14">양식을 입력해주세요.</p>
 				</span>
 			</h2>
+			<img class="join_separator1" alt="" src="./image/join_separator.svg" />
 		</section>
 		<section class="form-container">
-			<img class="separator-icon14" alt="" src="./common/join_separator.svg" />
 			<div class="form-content">
 				<div class="input-labels-parent">
 					<form class="id-input-container1" id="signupForm" method="post"
@@ -71,7 +71,7 @@
 								<div class="parent17">
 									<div class="div331">아이디</div>
 									<div class="input-icon-container">
-										<img class="icon154" alt="" src="./common/icon-85.svg" />
+										<img class="join_icon2" alt="" src="./image/join_icon2.svg" />
 									</div>
 								</div>
 							</div>
@@ -94,7 +94,7 @@
 								<div class="parent17">
 									<div class="div331">비밀번호</div>
 									<div class="input-icon-container">
-										<img class="icon154" alt="" src="./common/icon-93.svg" />
+										<img class="join_icon2" alt="" src="./image/join_icon2.svg" />
 									</div>
 								</div>
 							</div>
@@ -113,7 +113,7 @@
 								<div class="name-input-label-container">
 									<div class="div331">비밀번호 확인</div>
 									<div class="input-icon-container">
-										<img class="icon154" alt="" src="./common/icon-104.svg" />
+										<img class="join_icon2" alt="" src="./image/join_icon2.svg" />
 									</div>
 								</div>
 							</div>
@@ -128,7 +128,7 @@
 								<div class="parent17">
 									<div class="div331">이름</div>
 									<div class="input-icon-container">
-										<img class="icon154" alt="" src="./common/icon-113.svg" />
+										<img class="join_icon2" alt="" src="./image/join_icon2.svg" />
 									</div>
 								</div>
 							</div>
@@ -143,7 +143,7 @@
 								<div class="parent17">
 									<div class="div331">닉네임</div>
 									<div class="input-icon-container">
-										<img class="icon154" alt="" src="./common/icon-113.svg" />
+										<img class="join_icon2" alt="" src="./image/join_icon2.svg" />
 									</div>
 								</div>
 							</div>
@@ -166,7 +166,7 @@
 								<div class="parent17">
 									<div class="div331">휴대전화</div>
 									<div class="input-icon-container">
-										<img class="icon154" alt="" src="./common/icon-133.svg" />
+										<img class="join_icon2" alt="" src="./image/join_icon2.svg" />
 									</div>
 								</div>
 							</div>
@@ -189,7 +189,7 @@
 								<div class="input-label-container">
 									<div class="div331">이메일</div>
 									<div class="input-icon-container">
-										<img class="icon154" alt="" src="./common/icon-85.svg" />
+										<img class="join_icon2" alt="" src="./image/join_icon2.svg" />
 									</div>
 								</div>
 							</div>
@@ -204,7 +204,7 @@
 								<div class="parent17">
 									<div class="div331">우편번호</div>
 									<div class="input-icon-container">
-										<img class="icon154" alt="" src="./common/icon-85.svg" />
+										<img class="join_icon2" alt="" src="./image/join_icon2.svg" />
 									</div>
 								</div>
 							</div>
@@ -223,7 +223,7 @@
 								<div class="input-label-container">
 									<div class="div331">주소</div>
 									<div class="input-icon-container">
-										<img class="icon154" alt="" src="./common/icon-85.svg" />
+										<img class="join_icon2" alt="" src="./image/join_icon2.svg" />
 									</div>
 								</div>
 							</div>
@@ -237,7 +237,7 @@
 								<div class="input-label-container">
 									<div class="div331">상세주소</div>
 									<div class="input-icon-container">
-										<img class="icon154" alt="" src="./common/icon-85.svg" />
+										<img class="join_icon2" alt="" src="./image/join_icon2.svg" />
 									</div>
 								</div>
 							</div>

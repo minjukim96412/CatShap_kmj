@@ -48,4 +48,17 @@
 		SELECT COUNT(*)FROM users WHERE UNICK = #{unick} 
 	</select>
 	
+	 <update id="updateUser" parameterType="Users">
+        UPDATE users
+        SET uname=#{uname},
+            unick=#{unick},
+            utelecom=#{utelecom},
+            uphone=#{uphone},
+            email=#{email},
+            umailAddress=#{umailAddress},
+            uaddress=#{uaddress},
+            udetailAddress=#{udetailAddress}
+        WHERE userno=#{userNo}
+    </update>
+	
 </mapper>

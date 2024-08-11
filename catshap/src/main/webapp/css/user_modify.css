@@ -1,23 +1,3 @@
-.modal {
-    display: none; /* 숨김 상태로 시작 */
-    position: fixed; /* 화면 고정 */
-    z-index: 1000; /* 높은 z-index 값 */
-    left: 0;
-    top: 0;
-    width: 100%; /* 전체 화면 폭 */
-    height: 100%; /* 전체 화면 높이 */
-    overflow: auto; /* 스크롤 가능 */
-    background-color: rgba(0,0,0,0.4); /* 투명한 검정색 배경 */
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 중앙 정렬 */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* 모달 폭 */
-    z-index: 1001; /* 높은 z-index 값 */
-}
 
 .close {
     color: #aaa;
@@ -72,13 +52,7 @@
   display: inline-block;
   min-width: 66px;
 }
-.horizontal-divider15 {
-  height: 1px;
-  width: 25px;
-  position: relative;
-  border-top: 1px solid var(--color-darkslategray-100);
-  box-sizing: border-box;
-}
+
 .auth-options,
 .join-container,
 .join-divider-container {
@@ -156,7 +130,7 @@
   color: var(--color-darkgray-300);
 }
 .auth-container,
-.auth-container-wrapper {
+.auth-modify-wrapper {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -167,9 +141,8 @@
   justify-content: space-between;
   gap: var(--gap-xl);
 }
-.auth-container-wrapper {
-  width: 1058px;
-  justify-content: center;
+.auth-modify-wrapper {
+  width: 920px;
   padding: 0 var(--padding-xl) var(--padding-xs-8);
   box-sizing: border-box;
 }
@@ -393,7 +366,8 @@
 }
 .container47,
 .input14,
-.checkBtn{
+.checkBtn,
+.passwordBtn{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -409,7 +383,8 @@
   opacity: 0.5;
 }
 .input14,
-.checkBtn {
+.checkBtn,
+.passwordBtn {
   cursor: pointer;
   border: 0;
   padding: var(--padding-xs-5) var(--padding-sm) var(--padding-2xs-5);
@@ -638,7 +613,7 @@
   color: var(--color-whitesmoke-400);
 }
 .details1,
-.div318,
+.modify-wrapper,
 .form-container,
 .form-content {
   display: flex;
@@ -652,7 +627,7 @@
   font-size: var(--font-size-2xs);
   color: var(--color-mediumaquamarine);
 }
-.div318,
+.modify-wrapper,
 .form-container,
 .form-content {
   max-width: 100%;
@@ -660,9 +635,8 @@
 .form-content {
   width: 904px;
   align-items: flex-start;
-  gap: 60px;
 }
-.div318,
+.modify-wrapper,
 .form-container {
   align-items: flex-end;
   box-sizing: border-box;
@@ -676,7 +650,7 @@
   gap: 77.5px;
   text-align: left;
 }
-.div318 {
+.modify-wrapper {
   width: 1751px;
   background-color: var(--color-white);
   overflow: hidden;
