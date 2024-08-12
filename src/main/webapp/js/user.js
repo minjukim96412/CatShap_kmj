@@ -559,3 +559,4 @@ const validateInput = () => {
     $('#privacyAgree').on('change', () => validateAgreement('#privacyAgree', '#privacyAgree_error', '개인정보 수집 및 이용에 동의해야 합니다.'));
     $('#mktAgree').on('change', () => validateAgreement('#mktAgree', '', ''));
 }
+
