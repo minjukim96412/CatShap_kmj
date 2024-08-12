@@ -32,5 +32,33 @@
 		set upass=#{upass}
 		where usid=#{usid}
 	</update>
+
+	<insert parameterType="Users" id="registUser">
+		INSERT INTO users 
+		VALUES (seq_userno.nextval, 1, #{usid}, #{uname}, #{upass}, 
+		#{unick}, #{email}, #{utelecom}, #{uphone},'Y', #{umailAddress}, 
+		#{uaddress}, #{udetailAddress}, SYSDATE, NULL, 'N', #{mktAgree}, 0) 
+	</insert>
+	
+	<select parameterType="String" id="isUsidTaken" resultType="int">
+		SELECT COUNT(*)FROM users WHERE USID = #{usid} 
+	</select>
+
+	<select parameterType="String" id="isUnickTaken" resultType="int">
+		SELECT COUNT(*)FROM users WHERE UNICK = #{unick} 
+	</select>
+	
+	 <update id="updateUser" parameterType="Users">
+        UPDATE users
+        SET uname=#{uname},
+            unick=#{unick},
+            utelecom=#{utelecom},
+            uphone=#{uphone},
+            email=#{email},
+            umailAddress=#{umailAddress},
+            uaddress=#{uaddress},
+            udetailAddress=#{udetailAddress}
+        WHERE userno=#{userNo}
+    </update>
 	
 </mapper>

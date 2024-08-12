@@ -11,7 +11,7 @@
   <script src="./js/user_regex.js"></script>
   <script src="./js/user.js"></script>
 </head>
-<body>
+<body class="user_login">
   <div class="login-desktop">
     <section class="login">
       <div class="login-form">
