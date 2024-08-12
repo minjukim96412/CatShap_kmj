@@ -27,5 +27,6 @@
 		<mapper resource="catshap/butler/conf/Product.xml" />
 		<mapper resource="catshap/butler/conf/ProductView.xml" />
 		<mapper resource="catshap/butler/conf/ReviewView.xml" />
+		<mapper resource="catshap/butler/conf/Image.xml" />
 	</mappers>
 </configuration>
