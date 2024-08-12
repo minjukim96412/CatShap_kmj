@@ -12,15 +12,13 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/check-login-status")
 public class CheckLoginStatusServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1156456132189L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 로그인 상태를 확인하는 로직
         HttpSession session = request.getSession(false);
         boolean loggedIn = (session != null && session.getAttribute("user") != null);
 
-        // JSON 응답 작성
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.print("{\"loggedIn\": " + loggedIn + "}");

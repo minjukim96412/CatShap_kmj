@@ -20,44 +20,44 @@ import catshap.butler.interfaces.UserInterface;
 @WebServlet("/login")
 public class UserLoginServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 115648641352156L;
-	
-	private UserInterface userDao;
+    private static final long serialVersionUID = 115648641352156L;
+    private UserInterface userDao;
 
-	@Override
-	public void init() throws ServletException {
-		userDao = new UserDao();
-	}
+    @Override
+    public void init() throws ServletException {
+        userDao = new UserDao();
+    }
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		Users user = new Users();
-		user.setUsid(request.getParameter("usid"));
-		user.setUpass(request.getParameter("upass"));
-		
-		JsonObject jsonResponse = new JsonObject();
-		
-		try {
-			user = userDao.getUser(user);
-			
-			HttpSession session = request.getSession();
-			if (user != null) {
-				session.setAttribute("user", user);
-	            
-				jsonResponse.addProperty("success", true);
-				jsonResponse.addProperty("uname", user.getUname());
-				jsonResponse.addProperty("unick", user.getUnick());
-                
-			} else {
-				jsonResponse.addProperty("success", false);
-			}
-			response.setContentType("application/json; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.print(jsonResponse.toString());
-			out.flush();	
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
-		}
-	}
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Users user = new Users();
+        user.setUsid(request.getParameter("usid"));
+        user.setUpass(request.getParameter("upass"));
+
+        JsonObject jsonResponse = new JsonObject();
+
+        try {
+            user = userDao.getUser(user);
+            HttpSession session = request.getSession();
+
+            if (user != null) {
+                session.setAttribute("user", user);
+                //session.setAttribute("userNo", user.getUserNo()); // 세션에 userNo 저장
+
+                jsonResponse.addProperty("success", true);
+                jsonResponse.addProperty("uname", user.getUname());
+                jsonResponse.addProperty("unick", user.getUnick());
+            } else {
+                jsonResponse.addProperty("success", false);
+            }
+
+            response.setContentType("application/json; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.print(jsonResponse.toString());
+            out.flush();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        }
+    }
 }

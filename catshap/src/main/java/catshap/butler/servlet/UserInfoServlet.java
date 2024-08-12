@@ -17,30 +17,39 @@ import catshap.butler.bean.Users;
 @WebServlet("/user-info")
 public class UserInfoServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 115234896413526L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Users user = (Users) session.getAttribute("user");
-
+        response.setContentType("application/json; charset=UTF-8");
         JsonObject jsonResponse = new JsonObject();
-        if (user != null) {
-        	jsonResponse.addProperty("userNo", user.getUserNo());
-        	jsonResponse.addProperty("usid", user.getUsid());
-            jsonResponse.addProperty("uname", user.getUname());
-            jsonResponse.addProperty("unick", user.getUnick());
-            jsonResponse.addProperty("uphone", user.getUphone());
-            jsonResponse.addProperty("email", user.getEmail());
-            jsonResponse.addProperty("umailAddress", user.getUmailAddress());
-            jsonResponse.addProperty("uaddress", user.getUaddress());
-            jsonResponse.addProperty("udetailAddress", user.getUdetailAddress());
-        } else {
-            jsonResponse.addProperty("error", "User not logged in");
+
+        try {
+            HttpSession session = request.getSession(false); // false - 현재 세션이 없으면 새로 생성하지 않음
+            if (session != null) {
+                Users user = (Users) session.getAttribute("user");
+                if (user != null) {
+                    jsonResponse.addProperty("userNo", user.getUserNo());
+                    jsonResponse.addProperty("usid", user.getUsid());
+                    jsonResponse.addProperty("uname", user.getUname());
+                    jsonResponse.addProperty("unick", user.getUnick());
+                    jsonResponse.addProperty("uphone", user.getUphone());
+                    jsonResponse.addProperty("email", user.getEmail());
+                    jsonResponse.addProperty("umailAddress", user.getUmailAddress());
+                    jsonResponse.addProperty("uaddress", user.getUaddress());
+                    jsonResponse.addProperty("udetailAddress", user.getUdetailAddress());
+                } else {
+                    jsonResponse.addProperty("error", "User not logged in");
+                }
+            } else {
+                jsonResponse.addProperty("error", "Session not found");
+            }
+        } catch (Exception e) {
+            jsonResponse.addProperty("error", "An unexpected error occurred");
+            e.printStackTrace(); // 서버 로그에 오류 출력
         }
 
-        response.setContentType("application/json; charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.print(jsonResponse.toString());
             out.flush();
