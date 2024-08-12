@@ -178,16 +178,30 @@ $(function () {
         })
     });
 
-    // 비밀번호 변경의 비밀번호 변경 버튼 클릭한 경우
-    $('#userChangePwBtn').on('click', (e) => {
+	//회원수정에서 비밀번호변경을 누른 경우
+	$('#changePw').on('click', e => {
+		 window.location.href = 'user_change_pw.jsp';
+	});
+	
+	//비밀번호변경페이지에서 비밀번호변경을 누른 경우
+    $('#userChangePwBtn').on('click', function(e) {
         e.preventDefault();
+        
+        const user = JSON.parse(sessionStorage.getItem('user'));
+        console.log('User from sessionStorage:', user);
 
+        if (!user) {
+            alert('로그인이 필요합니다. 로그인 페이지로 이동합니다.');
+            window.location.href = 'user_login.jsp';
+            return;
+        }
+        
         const upass = $('#upass').val().trim();
         const upassConfirm = $('#upassConfirm').val().trim();
-        const user = JSON.parse(sessionStorage.getItem('user'));
         const isUpassValid = validatePassword();
-        const isEequalPassword = equalPassword(upass, upassConfirm);
-        if (isUpassValid && isEequalPassword) {
+        const isEqualPassword = equalPassword(upass, upassConfirm);
+        
+        if (isUpassValid && isEqualPassword) {
             $.ajax({
                 type: 'POST',
                 url: '/catshap/user-pass-change',
@@ -195,14 +209,14 @@ $(function () {
                     usid: user.usid,
                     upass: upass
                 },
-                success: function (response) {
+                success: function(response) {
                     if (response.success) {
                         window.location.href = 'user_change_pw_ok.jsp';
                     } else {
                         alert('비밀번호 변경 실패...');
                     }
                 },
-                error: function () {
+                error: function() {
                     alert('서버 오류가 발생했습니다.');
                 }
             });

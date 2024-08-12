@@ -1,6 +1,10 @@
+<%@page import="catshap.butler.bean.Users"%>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("utf-8");
+    request.setCharacterEncoding("utf-8");
+
+	HttpSession session2 = request.getSession();
+	Users user = (Users) session.getAttribute("user");
 %>
 <!DOCTYPE html>
 <html>
@@ -10,8 +14,19 @@
     <link rel="stylesheet" href="./css/user.css" />
     <link rel="stylesheet" href="./css/global.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="./js/check_login.js"></script>
 	<script src="./js/user_regex.js"></script>
 	<script src="./js/user.js"></script>
+	<script>
+        $(document).ready(function() {
+            // 사용자 정보를 JSON 형태로 JavaScript에 전달
+            const user = {
+                usid: '<%= user.getUsid() %>',
+                userNo: '<%= user.getUserNo() %>'
+            };
+            sessionStorage.setItem('user', JSON.stringify(user));
+        });
+    </script>
 </head>
 <body>
     <div class="login-desktop">

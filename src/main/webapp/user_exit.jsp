@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@page import="catshap.butler.bean.Users"%>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%

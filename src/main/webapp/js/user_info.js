@@ -1,5 +1,5 @@
 //user_info.js
-$(document).ready(function() {
+$(document).ready(() => {
     // 페이지 로드 시 사용자 정보를 서버에서 가져와서 폼에 채우기
     $.ajax({
         url: '/catshap/user-info',
