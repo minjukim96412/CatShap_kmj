@@ -3,12 +3,13 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
-	// 임시 사용자 생성 ==> 수정 필요
-	Users user = new Users();
-	user.setUserNo(1);
-	request.setAttribute("user", user);
-	
-	user = (Users)request.getAttribute("user");
+	// 세션에서 사용자 정보 가져오기
+	HttpSession session2 = request.getSession();
+	Users user = (Users) session2.getAttribute("user"); // 세션에서 사용자 정보 가져오기
+
+	if (user != null) {
+		int userNo = user.getUserNo();
+	}
 %>
 <!DOCTYPE html>
 <html>

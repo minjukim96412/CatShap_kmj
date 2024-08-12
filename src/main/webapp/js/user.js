@@ -39,6 +39,10 @@ $(function () {
       }
       
    });
+	// 마이페이지의 회원탈퇴 버튼 클릭한 경우
+    $('#userExitBtn').on('click', () => {
+        window.location.href = 'user_exit.jsp';
+    });
 
     // 로그인의 아이디 찾기 버튼 클릭한 경우
     $('#userLoginFindIdBtn').on('click', () => {
