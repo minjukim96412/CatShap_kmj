@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="catshap/butler/conf/db.properties" />
+	<typeAliases>
+		<typeAlias type="catshap.butler.bean.Grade" alias="Grade" />
+		<typeAlias type="catshap.butler.bean.Users" alias="Users" />
+		<typeAlias type="catshap.butler.bean.UserAuthcode" alias="UserAuthcode" />
+		<typeAlias type="catshap.butler.bean.Product" alias="Product" />
+		<typeAlias type="catshap.butler.bean.ProductView" alias="ProductView" />
+		<typeAlias type="catshap.butler.bean.ReviewView" alias="ReviewView" />
+	</typeAliases>	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="catshap/butler/conf/User.xml"/>
+		<mapper resource="catshap/butler/conf/UserAuthcode.xml"/>
+		<mapper resource="catshap/butler/conf/Product.xml" />
+		<mapper resource="catshap/butler/conf/ProductView.xml" />
+		<mapper resource="catshap/butler/conf/ReviewView.xml" />
+	</mappers>
+</configuration>

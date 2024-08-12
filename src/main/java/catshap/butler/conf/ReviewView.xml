@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reviewview">
+
+    <select id="selectReviewList" parameterType="int" resultType="ReviewView">
+        SELECT
+            P.PRODNO,
+            U.USERNO,U.UNAME,
+            R.REWVIEWNO,R.REVTITLE,R.REVTEXT,R.REVREGDATE,R.REVSCORE,R.PRODNO,R.USERNO
+        FROM
+            REVIEW R
+            JOIN PRODUCT P ON P.PRODNO = R.PRODNO
+            JOIN USERS U ON U.USERNO = R.USERNO
+        WHERE
+        	P.PRODNO = #{prodNo}
+    </select>
+    
+</mapper>
