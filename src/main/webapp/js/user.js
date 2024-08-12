@@ -2,6 +2,7 @@
 
 $(function() {
 
+
 	if ($('body').hasClass('user_join') || $('body').hasClass('user_modify')) {
 		validateInput();
 	}
@@ -73,6 +74,7 @@ $(function() {
 		// 버튼 클릭 시 모달 열기
 		$btn.on('click', function(event) {
 			event.preventDefault(); // 기본 링크 클릭 동작 방지
+
 			$.ajax({
 				url: fileUrl,
 				method: 'GET',
@@ -128,24 +130,23 @@ $(function() {
 	});
 
 
-
 	// 로그인의 회원가입 버튼 클릭한 경우
 	$('#userLoginSignupBtn').on('click', () => {
 		window.location.href = 'user_join.jsp';
 	});
 
 
-
 	// 아이디 찾기의 아이디 찾기 버튼 클릭한 경우
 	$('#userFindIdBtn').on('click', (e) => {
 		e.preventDefault();
 
-		const isUnameValid = validate(uname, regex.uname, '이름을 입력해주세요.', '이름 형식이 올바르지 않습니다.');
-		const isEmailValid = validate(email, regex.email, '이메일을 입력해주세요.', '이메일 형식이 올바르지 않습니다.');
+		const isUnameValid = validate('uname', regex.uname, '이름을 입력해주세요.', '이름 형식이 올바르지 않습니다.');
+		const isEmailValid = validate('email', regex.email, '이메일을 입력해주세요.', '이메일 형식이 올바르지 않습니다.');
+
 		if (isUnameValid && isEmailValid) {
 			const uname = $('#uname').val().trim();
 			const email = $('#email').val().trim();
-
+			
 			$.ajax({
 				type: 'POST',
 				url: 'http://localhost:8888/catshap/user-id-recovery',
@@ -171,10 +172,10 @@ $(function() {
 	$('#userFindPwBtn').on('click', (e) => {
 		e.preventDefault();
 
-		const isUnameValid = validate(uname, regex.uname, '이름을 입력해주세요.', '이름 형식이 올바르지 않습니다.');
-		const isUsidValid = validate(usid, regex.usid, '아이디를 입력해주세요.', '아이디 형식이 올바르지 않습니다.');
-		const isEmailValid = validate(email, regex.email, '이메일을 입력해주세요.', '이메일 형식이 올바르지 않습니다.');
-
+		const isUnameValid = validate('uname', regex.uname, '이름을 입력해주세요.', '이름 형식이 올바르지 않습니다.');
+		const isUsidValid = validate('usid', regex.usid, '아이디를 입력해주세요.', '아이디 형식이 올바르지 않습니다.');
+		const isEmailValid = validate('email', regex.email, '이메일을 입력해주세요.', '이메일 형식이 올바르지 않습니다.');
+		
 		if (isUnameValid && isUsidValid && isEmailValid) {
 			const uname = $('#uname').val().trim();
 			const usid = $('#usid').val().trim();
@@ -208,7 +209,9 @@ $(function() {
 		e.preventDefault();
 		const uauthcode = $('#uauthcode').val().trim();
 		const user = JSON.parse(sessionStorage.getItem('user'));
-		const isUauthcodeValid = validate(uauthcode, regex.uauthcode, '인증코드를 입력해주세요.', '인증코드는 6개의 숫자입니다.');
+
+		const isUauthcodeValid = validate('uauthcode', regex.uauthcode, '인증코드를 입력해주세요.', '인증코드는 6개의 숫자입니다.');
+
 		if (isUauthcodeValid) {
 			$.ajax({
 				type: 'POST',
@@ -277,7 +280,6 @@ $(function() {
 					upass: upass
 				},
 				success: function(response) {
-					console.log(response);
 					if (response.success) {
 						window.location.href = 'user_change_pw_ok.jsp';
 					} else {
@@ -368,6 +370,49 @@ $(function() {
             console.error('Error:', xhr, status, error);
         }
     });
+
+	// 회원 탈퇴 동의 버튼을 클릭한 경우
+	$('#accountExitBtn').on('click', (e) => {
+		e.preventDefault();
+		const upass = $('#upass').val().trim();
+		const upassConfirm = $('#upassConfirm').val().trim();
+		const isPasswordValid = validatePassword();
+		const isEequalPassword = equalPassword(upass, upassConfirm);
+		const userNo = $('#userNo').val();
+		if (isPasswordValid && isEequalPassword) {
+			$('#upassConfirm-error').text("비밀번호가 일치합니다.").css('color', 'blue').show();
+			if($('#accountExit').is(':checked')) {
+				$.ajax({
+				type: 'POST',
+				url: 'http://localhost:8888/catshap/user-exit-pass-confirm',
+				data: {
+					userNo: userNo,
+					upass: upass
+				},
+				success: function(response) {
+					if (response.success) {
+						alert('회원탈퇴 성공!');
+						window.location.href = 'main.jsp';
+					} else {
+						alert('회원탈퇴 실패...');
+					}
+				},
+				error: function() {
+					alert('서버 오류가 발생했습니다.');
+				}
+			});
+			} else {
+				alert('회원 탈퇴를 하기 위해서는 탈퇴 동의를 체크해야합니다.');
+			}
+		}
+	});
+
+	// 회원 탈퇴 취소 버튼을 클릭한 경우
+	$('#userExitCancelBtn').on('click', () => {
+		window.location.href = 'user_mypage.jsp';
+	});
+	
+
 });
 
 
@@ -378,6 +423,8 @@ $(function() {
 
 
 });
+
+// 유효성 검사 메소드
 
 const validate = (id, regex, blankErrorMsg, regexErrorMsg) => {
 	return validateField(`#${id}`, `#${id}-error`, blankErrorMsg) &&
@@ -408,7 +455,7 @@ const validatePassword = () => {
 // 비밀번호 일치 여부 확인 메소드
 const equalPassword = (upass, upassConfirm) => {
 	if (upass !== upassConfirm) {
-		$('#upassConfirm-error').text("비밀번호가 일치하지 않습니다.").show();
+		$('#upassConfirm-error').text("비밀번호가 일치하지 않습니다.").css('color', 'red').show();
 		return false;
 	} else {
 		$('#upassConfirm-error').text('비밀번호가 일치합니다.').css('color', 'blue');

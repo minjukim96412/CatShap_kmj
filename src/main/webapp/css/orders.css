@@ -1,0 +1,420 @@
+.detail-title,
+.title-detail-container {
+    align-self: stretch;
+}
+
+.detail-title {
+    text-align: center;
+    position: relative;
+    font-size: var(--font-size-smi);
+    line-height: 19px;
+    color: var(--color-darkgray-300);
+    flex-shrink: 0;
+}
+
+.title-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 0.4px;
+}
+
+.form-container {
+    gap: 15px;
+}
+
+.strong-title {
+    margin: 0;
+    width: 100%;
+    position: relative;
+    font-size: inherit;
+    letter-spacing: 3.96px;
+    line-height: 25.2px;
+    font-weight: 700;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.strong-wrapper {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 var(--padding-xl) 0 var(--padding-5xl);
+    padding-bottom: 10px;
+}
+
+.horizontal-divider {
+    height: 1px;
+    width: 25px;
+    position: relative;
+    border-top: 1px solid var(--color-darkslategray-100);
+    box-sizing: border-box;
+}
+
+.horizontal-divider-frame {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 var(--padding-xl) 0 var(--padding-2xl);
+}
+
+.header-container,
+.title-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.title-container {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--gap-22xl);
+}
+
+.header-container {
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0 var(--padding-11xl);
+    box-sizing: border-box;
+    max-width: 100%;
+    padding-bottom: 30px;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+}
+
+h3,
+dt {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.screen-desktop {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* orders.css */
+/* 섹션 및 헤더 스타일 */
+.section-class {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.header-container {
+    margin-bottom: 30px;
+}
+
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title-detail-container {
+    display: flex;
+    align-items: center;
+}
+
+.strong-wrapper {
+    margin-right: 10px;
+}
+
+.strong-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #444;
+}
+
+.detail-title {
+    font-size: 18px;
+    color: #777;
+}
+
+.horizontal-divider-frame {
+    margin-top: 10px;
+}
+
+.horizontal-divider {
+    height: 2px;
+    background-color: #e5e5e5;
+}
+
+/* 주문 안내 문구 스타일 */
+.order-list-info {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    align-items: center;
+}
+
+.info-icon img {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.info-title img {
+    width: 25px;
+    padding-right: 5px;
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-title {
+    display: flex;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.info-list {
+    margin-bottom: 20px;
+}
+
+.info-list li {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.order-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.status-btn {
+    background-color: #d9f0e5;
+    color: #007a4d;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.date-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.date-btn {
+    background-color: #f9f9f9;
+    color: #555;
+    padding: 8px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.date-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.date-picker {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.date-picker input[type="date"] {
+    padding: 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.search-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.search-btn:hover {
+    background-color: #555;
+}
+
+/* 주문 목록 스타일 */
+.menu-container {
+    width: 100%;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.tab-menu {
+    width: 100%;
+    list-style-type: none;
+    display: inline-flex;
+    justify-content: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0;
+}
+
+.tab-menu .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: #333;
+}
+
+.tab-menu .tab:hover {
+    background-color: #f1f1f1;
+}
+
+.tab-menu .tab.active {
+    background-color: #ffffff;
+    border-top: 2px solid #000000;
+    font-weight: bold;
+    color: #000000;
+}
+
+.tab-menu .tab+.tab {
+    border-left: none;
+}
+
+/* 주문 정보 스타일 */
+.order-info-container {
+    margin-top: 20px;
+}
+
+.order-title {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 15px;
+}
+
+.order-title dt {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.span-title-subtext {
+    padding-left: 10px;
+    font-size: 14px;
+    color: #999;
+}
+
+.orders-table {
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.orders-table colgroup col {
+    border-right: 1px solid #f0f0f0;
+}
+
+.orders-table th {
+    padding: 10px;
+    font-size: 14px;
+    color: #555;
+    font-weight: 600;
+}
+
+.orders-table tbody .orders-tr {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.orders-table td {
+    padding: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.orders-table td img {
+    width: 60px;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* 주문 내역 없는 경우 */
+.order-table-none {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    border: 1px solid #e0e0e0;
+    
+}
+
+.order-table-none img {
+    width: 40px;
+}
+
+/* 주문 내역 페이징 */
+.paging-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.paging-list {
+    list-style: none;
+    padding: 0;
+    display: inline-flex;
+    gap: 5px;
+}
+
+.paging-list .page-item {
+    display: inline-block;
+}
+
+.paging-list .page-link {
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.paging-list .active .page-link {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+.orderCancelBtn {
+    background-color: #ffcdc4;
+    color: red;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -61,4 +61,11 @@
         WHERE userno=#{userNo}
     </update>
 	
+	<update id="updateExitUserStatus" parameterType="Users">
+		update users
+		set ustatus='N'
+		where userNo=#{userNo}
+		and upass=#{upass}
+	</update>
+	
 </mapper>

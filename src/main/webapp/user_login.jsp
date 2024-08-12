@@ -40,8 +40,10 @@
                     <input id="usid" class="label-input-id" placeholder="ID" type="text" />
 	                <p id="usid-error" class="error-message" style="display: none;"></p>
                   </div>
-                  <input id="upass" class="label-input-pw" placeholder="PASSWORD" type="password" />
-                  <p id="upass-error" class="error-message" style="display: none;"></p>
+                  <div class="password-input-container">
+	                  <input id="upass" class="label-input-pw" placeholder="PASSWORD" type="password" />
+	                  <p id="upass-error" class="error-message" style="display: none;"></p>                  
+                  </div>
                 </div>
               </div>
             </div>

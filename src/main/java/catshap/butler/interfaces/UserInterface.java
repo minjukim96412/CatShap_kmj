@@ -28,5 +28,7 @@ public interface UserInterface {
 	public abstract boolean isUnickTaken(String unick) throws SQLException; // 닉네임 중복검사
 
 	public abstract int updateUser(Users user) throws SQLException; //회원정보 업데이트
+
+	public abstract int updateExitUserStatus(Users user) throws SQLException; // 탈퇴 사용자 본인 확인
 	
 }

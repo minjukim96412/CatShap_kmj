@@ -164,4 +164,14 @@ public class UserDao implements UserInterface {
             return result;
         }
     }
+
+	@Override
+	public int updateExitUserStatus(Users user) throws SQLException {
+		SqlSession ss = ssf.openSession();
+		int result = ss.insert("user.updateExitUserStatus", user);
+		ss.commit();
+		ss.close();
+		return result;
+	}
+
 }
