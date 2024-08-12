@@ -1,4 +1,4 @@
-package catshap.img.bean;
+package catshap.butler.bean;
 
 public class Image {
 	private String proddescript;
@@ -54,8 +54,5 @@ public class Image {
 		return "Image [proddescript=" + proddescript + ", prodimgpath=" + prodimgpath + ", prodprice=" + prodprice
 				+ ", proddetailname=" + proddetailname + "]";
 	}
-	
-	
-
 	
 }// class

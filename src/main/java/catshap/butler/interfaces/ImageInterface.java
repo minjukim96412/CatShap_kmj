@@ -1,8 +1,8 @@
-package catshap.img.interfaces;
+package catshap.butler.interfaces;
 
 import java.util.List;
 
-import catshap.img.bean.Image;
+import catshap.butler.bean.Image;
 
 public interface ImageInterface {
 		public abstract List<Image> selectImage() throws Exception;

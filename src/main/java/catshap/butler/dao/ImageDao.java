@@ -1,4 +1,4 @@
-package catshap.img.dao;
+package catshap.butler.dao;
 
 import java.io.Reader;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import catshap.img.bean.Image;
-import catshap.img.interfaces.ImageInterface;
+import catshap.butler.bean.Image;
+import catshap.butler.interfaces.ImageInterface;
 
 public class ImageDao implements ImageInterface{
 	private static Reader reader = null;
