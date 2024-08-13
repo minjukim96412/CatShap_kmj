@@ -6,10 +6,7 @@ $(document).ready(() => {
         type: 'GET',
         dataType: 'json',
         success: function(data) {
-            if (data.error) {
-                alert(data.error);
-                // 사용자 로그인 상태가 아닐 경우 처리
-            } else {
+            if (data) {
                 // 폼 필드를 사용자 데이터로 채우기
                 $('#usid').val(data.usid);
                 $('#uname').val(data.uname);

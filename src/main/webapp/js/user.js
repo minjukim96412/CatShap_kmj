@@ -1,12 +1,5 @@
 $(function () {
    
-   // Enter 키 입력 방지
-    $('input').on('keypress', function (event) {
-        if (event.key === 'Enter') {
-            event.preventDefault(); // Enter 키 기본 동작 방지
-        }
-    });
-   
     // 로그인 버튼 클릭한 경우
     $("#userLoginBtn").on('click', (e) => {
       e.preventDefault();
@@ -225,6 +218,7 @@ $(function () {
 
     if ($('body').hasClass('user_join') || $('body').hasClass('user_modify')) {
         validateInput();
+        enterprevent();
     }
 
    // 회원가입의 회원가입 버튼을 클릭한 경우
@@ -578,3 +572,10 @@ const validateInput = () => {
     $('#mktAgree').on('change', () => validateAgreement('#mktAgree', '', ''));
 }
 
+const enterprevent = () => {
+	    $('input').on('keypress', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Enter 키 기본 동작 방지
+        }
+    });
+}

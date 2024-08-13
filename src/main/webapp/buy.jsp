@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/buy.css">
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--<script src="./js/check_login.js"></script>-->
     <script src="./js/buy.js"></script>
     <script src="./js/user.js"></script>
 </head>

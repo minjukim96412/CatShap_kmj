@@ -39,12 +39,8 @@ public class UserInfoServlet extends HttpServlet {
                     jsonResponse.addProperty("umailAddress", user.getUmailAddress());
                     jsonResponse.addProperty("uaddress", user.getUaddress());
                     jsonResponse.addProperty("udetailAddress", user.getUdetailAddress());
-                } else {
-                    jsonResponse.addProperty("error", "User not logged in");
-                }
-            } else {
-                jsonResponse.addProperty("error", "Session not found");
-            }
+                } 
+            } 
         } catch (Exception e) {
             jsonResponse.addProperty("error", "An unexpected error occurred");
             e.printStackTrace(); // 서버 로그에 오류 출력
