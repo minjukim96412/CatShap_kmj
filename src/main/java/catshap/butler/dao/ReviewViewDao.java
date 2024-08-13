@@ -33,9 +33,9 @@ public class ReviewViewDao implements ReviewViewInterface {
 	}
 	
 	@Override
-    public int registReview(ReviewView review) throws SQLException {
+    public int registReview(ReviewView reviewView) throws SQLException {
         try (SqlSession ss = ssf.openSession()) {
-            int result = ss.insert("ReviewView.registReview", review);
+            int result = ss.insert("reviewview.registReview", reviewView);
             ss.commit();
             return result;
         }

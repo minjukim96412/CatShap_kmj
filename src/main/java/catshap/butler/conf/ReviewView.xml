@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reviewview">
-
     <select id="selectReviewList" parameterType="int" resultType="ReviewView">
         SELECT
             P.PRODNO,
@@ -14,9 +13,8 @@
         WHERE
         	P.PRODNO = #{prodNo}
     </select>
-    
-    
     <insert id="registReview" parameterType="ReviewView"> 
-    	INSERT INTO REVIEW VALUES (seq_reviewno.nextval, #{userNo}, #{prodNo}, #{revTitle}, #{revText}, sysdate, NULL ,#{revScore});
+    	INSERT INTO REVIEW VALUES (seq_reviewno.nextval, #{userNo},
+    	 #{prodNo}, #{revTitle}, #{revText}, sysdate, NULL ,#{revScore})
     </insert>
 </mapper>

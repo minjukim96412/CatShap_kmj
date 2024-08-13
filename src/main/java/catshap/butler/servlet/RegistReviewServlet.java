@@ -9,22 +9,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import catshap.butler.bean.ReviewView;
 import catshap.butler.dao.ReviewViewDao;
 import catshap.butler.interfaces.ReviewViewInterface;
 
-@WebServlet("/RegistReview") // 올바른 URL 패턴 사용
+@WebServlet("/RegistReview")
 public class RegistReviewServlet extends HttpServlet {
     private static final long serialVersionUID = 126574856513248651L;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // JSON 요청 바디 파싱
         Gson gson = new Gson();
         ReviewView review = gson.fromJson(request.getReader(), ReviewView.class);
 
-        // ReviewViewDao를 통해 데이터베이스에 리뷰 저장
+        // userNo와 prodNo가 올바르게 전달되었는지 확인
+        if (review.getUserNo() == 0 || review.getProdNo() == 0) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            response.getWriter().write(gson.toJson(new ResponseMessage(false)));
+            return;
+        }
+
         ReviewViewInterface reviewDao = new ReviewViewDao();
         try {
             int result = reviewDao.registReview(review);

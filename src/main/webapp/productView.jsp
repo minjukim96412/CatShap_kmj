@@ -1,3 +1,5 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="catshap.butler.bean.Users"%>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="catshap.butler.bean.ReviewView"%>
 <%@page import="catshap.butler.dao.ReviewViewDao"%>
@@ -11,6 +13,7 @@
     
 <%
 		int prodNo = Integer.parseInt(request.getParameter("prodNo"));
+		
 		ProductViewInterface pi = new ProductViewDao();
 		ProductView productView = pi.getProduct(prodNo);
 		
@@ -18,7 +21,11 @@
 		List<ReviewView> listReview = ri.selectReviewList(prodNo);
 		
 		pageContext.setAttribute("productView", productView);
-		 pageContext.setAttribute("listReview", listReview);
+		pageContext.setAttribute("listReview", listReview);
+		
+		
+		HttpSession session2 = request.getSession();
+		Users user = (Users) session.getAttribute("user");
 		
 		pi.addCount(prodNo);
 
@@ -34,6 +41,7 @@
     <link rel="stylesheet" href="./css/review.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./js/ProductView.js"></script>
+    <script src="./js/review.js"></script>
     
 </head>
 <body>
@@ -298,36 +306,37 @@
                 </div>
                 <div class="vertical-divider12"></div>
             </div>
-     <!-- 상품후기 작성 버튼 -->
-    			<button class="link75" id="reviewBtn">
-                     <div class="action-icons">
-                        <img class="icon165" src="./image/icon_v.svg" />
-                     </div>
-                     <div class="div344">상품 후기 작성</div>
-                  </button>
-
-    <!-- 모달 -->
-    <div id="reviewModal" class="modal">
-        <!-- 모달 내용 -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>상품후기 작성</h2>
-            <form id="reviewForm">
-            	<input type="hidden" id="prodNo" value="${prodNo}"/>
-                <label for="revTitle">후기 제목:</label><br>
-                <input type="text" id="revTitle" name="revTitle"><br>
-                
-                <label for="revText">후기 내용:</label><br>
-                <textarea id="revText" name="revText"></textarea><br>
-                
-                <label for="revScore">평점:</label><br>
-                <input type="number" id="revScore" name="revScore" min="1" max="5"><br>
-                
-                <button id="submitReview">등록</button>
-            </form>
-        </div>
-    </div>
-    <script src="./js/review.js"></script>
+			     <!-- 상품후기 작성 버튼 -->
+			<button class="link75" id="reviewBtn">
+			    <div class="action-icons">
+			        <img class="icon165" src="./image/icon_v.svg" />
+			    </div>
+			    <div class="div344">상품 후기 작성</div>
+			</button>
+			
+			<!-- 모달 -->
+			<div id="reviewModal" class="modal">
+			    <!-- 모달 내용 -->
+			    <div class="modal-content">
+			        <span class="close">&times;</span>
+			        <h2>상품후기 작성</h2>
+			        <!-- 모달 내용 -->
+			        <input type="hidden" id="prodNo" value="<%= prodNo %>"/>
+    				<div id="displayProdNo"></div>
+			        <label for="revTitle">후기 제목:</label><br>
+			        <input type="text" id="revTitle" name="revTitle"><br>
+			        
+			        <label for="revText">후기 내용:</label><br>
+			        <textarea id="revText" name="revText"></textarea><br>
+			        
+			        <label for="revScore">평점:</label><br>
+			        <input type="number" id="revScore" name="revScore" min="1" max="5"><br>
+			        
+			        <button id="submitReview">등록</button>
+			        <p id="message"></p> <!-- 메시지 출력 -->
+			        <div id="displayProdNo"></div>
+			    </div>
+			</div>
         </div>
     </div>
     <div class="separator6"></div>

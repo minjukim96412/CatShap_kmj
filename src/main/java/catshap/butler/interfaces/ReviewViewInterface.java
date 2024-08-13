@@ -9,6 +9,6 @@ public interface ReviewViewInterface {
 
 	public abstract List<ReviewView> selectReviewList(int prodNo) throws Exception;
 
-	int registReview(ReviewView review) throws SQLException;
+	int registReview(ReviewView reviewView) throws SQLException;
 	
 }
