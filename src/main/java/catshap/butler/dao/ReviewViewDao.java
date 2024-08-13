@@ -1,13 +1,16 @@
 package catshap.butler.dao;
 
 import java.io.Reader;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import catshap.butler.bean.ReviewView;
+import catshap.butler.bean.Users;
 import catshap.butler.interfaces.ReviewViewInterface;
 
 public class ReviewViewDao implements ReviewViewInterface {
@@ -28,4 +31,13 @@ public class ReviewViewDao implements ReviewViewInterface {
 	public List<ReviewView> selectReviewList(int prodNo) throws Exception {
 		return ssf.openSession().selectList("reviewview.selectReviewList",prodNo);
 	}
+	
+	@Override
+    public int registReview(ReviewView review) throws SQLException {
+        try (SqlSession ss = ssf.openSession()) {
+            int result = ss.insert("ReviewView.registReview", review);
+            ss.commit();
+            return result;
+        }
+    }
 }

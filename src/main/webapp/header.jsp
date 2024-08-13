@@ -41,7 +41,7 @@
                         <img class="item-icon58" loading="lazy" alt="" src="./image/icon4.png" />
                     </div>
                     <div class="strong-q-a-wrapper3">
-                        <b class="strong-q18" id="strongQ"><a href="./D-01.html">Q & A</a></b>
+                        <b class="strong-q18" id="strongQ"><a href="qnaboardmain.jsp">Q & A</a></b>
                     </div>
                     <div class="review-container-container">
                         <div class="review-container3">

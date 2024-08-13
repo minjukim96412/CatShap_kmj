@@ -6,7 +6,7 @@
         SELECT
             P.PRODNO,
             U.USERNO,U.UNAME,
-            R.REWVIEWNO,R.REVTITLE,R.REVTEXT,R.REVREGDATE,R.REVSCORE,R.PRODNO,R.USERNO
+            R.REVIEWNO,R.REVTITLE,R.REVTEXT,R.REVREGDATE,R.REVSCORE
         FROM
             REVIEW R
             JOIN PRODUCT P ON P.PRODNO = R.PRODNO
@@ -15,4 +15,8 @@
         	P.PRODNO = #{prodNo}
     </select>
     
+    
+    <insert id="registReview" parameterType="ReviewView"> 
+    	INSERT INTO REVIEW VALUES (seq_reviewno.nextval, #{userNo}, #{prodNo}, #{revTitle}, #{revText}, sysdate, NULL ,#{revScore});
+    </insert>
 </mapper>

@@ -7,23 +7,23 @@
             P.PRODNO, P.PRODDESCRIPT,
             P.PRODCOUNT, P.REVCOUNT,
             PC.PRODCATNO, PC.PRDCATNAME,
-            PP.PRDONO, PP.PRODREGDATE, PP.PRODPRICE,
+            PP.PRODNO, PP.PRODREGDATE, PP.PRODPRICE,
             PI.PRODDETAILIMGPATH, PI.PRODNO, PI.PRODIMGPATH 
         FROM
             PRODUCT P
             JOIN PRODIMAGE PI ON P.PRODNO = PI.PRODNO
-            JOIN PRODPRICE PP ON P.PRODNO = PP.PRDONO
+            JOIN PRODPRICE PP ON P.PRODNO = PP.PRODNO
             JOIN PRODATEGORY PC ON P.PRODCATNO = PC.PRODCATNO
         WHERE
            P.PRODNO = #{prodNo}
     </select>
     
     <update id="addCount" parameterType="int">
-		update product
-		set prodCount = prodCount + 1
-		where prodNo = #{prodNo}
-	</update>
-	
+      update product
+      set prodCount = prodCount + 1
+      where prodNo = #{prodNo}
+   </update>
+   
     <resultMap id="ProductViewMap" type="ProductView">
         <result column="PRODNO" property="prodNo" />
         <result column="PRODDESCRIPT" property="prodDescript" />

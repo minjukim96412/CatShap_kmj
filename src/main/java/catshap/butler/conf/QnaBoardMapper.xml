@@ -8,7 +8,7 @@
             SELECT seq_qnano.NEXTVAL FROM dual
         </selectKey>
         INSERT INTO QNA (QNANO, USERNO, PRODNO, QNACATNO, QNATITLE, QNATEXT, QNAREGDATE, QNAUPDATE, QSORT)
-        VALUES (#{qnano}, #{userno}, #{prodno}, #{qnacatno}, #{qnatitle}, #{qnatext}, #{qnaregdate}, #{qnaupdate,jdbcType=TIMESTAMP}, #{qsort})
+        VALUES (#{qnano}, #{userno}, #{prodno}, #{qnacatno}, #{qnatitle}, #{qnatext}, #{qnaregdate}, sysdate, #{qsort})
     </insert>
 
     <!-- QnA 목록 조회 쿼리 -->

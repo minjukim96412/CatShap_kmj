@@ -1,4 +1,15 @@
+<%@page import="catshap.butler.bean.Users"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+		HttpSession session2 = request.getSession();
+		Users user = (Users) session2.getAttribute("user"); // 세션에서 사용자 정보 가져오기
+		if (user != null) {
+		String userNick = user.getUnick();
+		out.print("<h2><span style='color:#FF5733'>" + userNick + "</span>님</h2><p>환영합니다</p>");
+		} else {
+		out.print("<h2>사용자 정보를 불러올 수 없습니다.</h2>");
+		}
+	 %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +17,8 @@
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/qnaboardwrite.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/check_login.js"></script>  
     <script>
         function openProductSearch() {
             window.open('${pageContext.request.contextPath}/api/qnaproductsearch.jsp', '상품 검색', 'width=600,height=400');
@@ -17,7 +30,7 @@
     </script>
 </head>
 <body>
-    <form action="${pageContext.request.contextPath}/QnaInsertServlet" method="post">
+    <form action="/catshap/QnaInsertServlet" method="post">
         <section class="author-input">
             <div class="author-input-inner">
                 <div class="form-header-parent">

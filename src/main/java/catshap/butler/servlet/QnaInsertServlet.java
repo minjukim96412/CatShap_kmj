@@ -1,7 +1,9 @@
 package catshap.butler.servlet;
 
 import catshap.butler.dao.QnaBoardDao;
+import catshap.butler.interfaces.QnaBoardInterface;
 import catshap.butler.bean.QnaBoard;
+import catshap.butler.bean.Users;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,9 +15,9 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.Instant;
 
-//@WebServlet("/QnaInsertServlet")
+@WebServlet("/QnaInsertServlet")
 public class QnaInsertServlet extends HttpServlet {
-    private QnaBoardDao qnaBoardDao;
+    private QnaBoardInterface qnaBoardDao;
 
     @Override
     public void init() {
@@ -25,14 +27,8 @@ public class QnaInsertServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            HttpSession session = request.getSession();
-            Integer userNo = (Integer) session.getAttribute("userno");
-
-            if (userNo == null) {
-                response.sendRedirect("login.jsp");
-                return;
-            }
-
+        	Users user = new Users();
+        	int  user.setUsid(request.getParameter("userNo"));
             int prodNo = Integer.parseInt(request.getParameter("prodno"));
             int qnaCatNo = Integer.parseInt(request.getParameter("qnacatno"));
             String qnaTitle = request.getParameter("qnatitle");

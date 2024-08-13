@@ -1,14 +1,10 @@
 package catshap.butler.dao;
 
-import java.io.InputStream;
 import java.io.Reader;
-import java.util.HashMap;
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
@@ -17,8 +13,8 @@ import catshap.butler.interfaces.ProductInterface;
 
 public class ProductDao implements ProductInterface {
 
-	private static Reader reader = null;
-	private static SqlSessionFactory ssf = null;
+	private static Reader reader;
+	private static SqlSessionFactory ssf;
 	
 	static {
 		try {

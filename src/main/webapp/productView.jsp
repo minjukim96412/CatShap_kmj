@@ -31,8 +31,10 @@
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/B-02.css" />
+    <link rel="stylesheet" href="./css/review.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./js/ProductView.js"></script>
+    
 </head>
 <body>
     <jsp:include page="header.jsp"></jsp:include>
@@ -233,6 +235,7 @@
     </div>
     <section class="backgroundborder3">
         <div class="review-list-content">
+        	
             <div class="review-list-content-wrapper">
                 <div class="empty-review-message">
                     <img class="icon57" loading="lazy" alt="" src="./image/icon-16.svg" />
@@ -295,12 +298,36 @@
                 </div>
                 <div class="vertical-divider12"></div>
             </div>
-            <div class="link28" id="linkContainer">
-                <div class="write-review-link">
-                    <img class="icon63" loading="lazy" alt="" src="./image/icon-22.svg" />
-                </div>
-                <div class="div95">  상품후기 작성</div>
-            </div>
+     <!-- 상품후기 작성 버튼 -->
+    			<button class="link75" id="reviewBtn">
+                     <div class="action-icons">
+                        <img class="icon165" src="./image/icon_v.svg" />
+                     </div>
+                     <div class="div344">상품 후기 작성</div>
+                  </button>
+
+    <!-- 모달 -->
+    <div id="reviewModal" class="modal">
+        <!-- 모달 내용 -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>상품후기 작성</h2>
+            <form id="reviewForm">
+            	<input type="hidden" id="prodNo" value="${prodNo}"/>
+                <label for="revTitle">후기 제목:</label><br>
+                <input type="text" id="revTitle" name="revTitle"><br>
+                
+                <label for="revText">후기 내용:</label><br>
+                <textarea id="revText" name="revText"></textarea><br>
+                
+                <label for="revScore">평점:</label><br>
+                <input type="number" id="revScore" name="revScore" min="1" max="5"><br>
+                
+                <button id="submitReview">등록</button>
+            </form>
+        </div>
+    </div>
+    <script src="./js/review.js"></script>
         </div>
     </div>
     <div class="separator6"></div>
