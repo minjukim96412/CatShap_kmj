@@ -54,8 +54,8 @@
 				              <nav class='profile-nav'>
 				                <a href='#'>주문내역</a>
 				                <a href='/catshap/user_modify.jsp'>회원정보 수정</a>
-				                <a href='#'>내 리뷰 보기</a>
-				                <a href='#'>내 게시글 보기</a>
+				                <a href='/catshap/user_myReview.jsp'>내 리뷰 보기</a>
+				                <a href='/catshap/user_myQnA.jsp'>내 게시글 보기</a>
 				              </nav>
 		            </div>
 		        </div>

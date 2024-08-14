@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
  $(document).ready(function() {
-            var $modal = $('#reviewModal');
-            var $openModalButton = $('#reviewBtn');
+            const $modal = $('#reviewModal');
+            const $openModalButton = $('#reviewBtn');
 
             // 모달 열기
             $openModalButton.on('click', function() {
@@ -37,7 +37,8 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault(); // 폼 제출 기본 동작 방지
  	checkLoginStatus(function() {
         // 폼 데이터 가져오기
-        const userNo = JSON.parse(sessionStorage.getItem('userNo'));
+
+        const userNo = $('#userNo').val();
         const prodNo = $('#prodNo').val();
         const revTitle = $('#revTitle').val();
         const revText = $('#revText').val();

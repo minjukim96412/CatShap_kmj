@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="catshap.butler.bean.Users"%>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -13,7 +14,6 @@
     
 <%
 		int prodNo = Integer.parseInt(request.getParameter("prodNo"));
-		
 		ProductViewInterface pi = new ProductViewDao();
 		ProductView productView = pi.getProduct(prodNo);
 		
@@ -23,12 +23,10 @@
 		pageContext.setAttribute("productView", productView);
 		pageContext.setAttribute("listReview", listReview);
 		
-		
-		HttpSession session2 = request.getSession();
-		Users user = (Users) session.getAttribute("user");
-		
+	    HttpSession session2 = request.getSession();
+	    Users user = (Users) session2.getAttribute("user");
+	    int userNo = (user != null) ? user.getUserNo() : 0;
 		pi.addCount(prodNo);
-
 %>
 
 <!DOCTYPE html>
@@ -233,7 +231,7 @@
         <c:forEach var="review" items="${listReview}">
             <div>
                 <div><strong>제목:</strong> ${review.revTitle}</div>
-                <div><strong>닉네임:</strong> ${review.uname}</div>
+                <div><strong>닉네임:</strong> ${review.unick}</div>
                 <div><strong>등록 날짜:</strong> ${review.revRegDate}</div>
                 <div><strong>별점:</strong> ${review.revScore}</div>
                 <div><strong>내용:</strong> ${review.revText}</div>
@@ -322,6 +320,7 @@
 			        <h2>상품후기 작성</h2>
 			        <!-- 모달 내용 -->
 			        <input type="hidden" id="prodNo" value="<%= prodNo %>"/>
+			         <input type="hidden" id="userNo" value="<%= user != null ? user.getUserNo() : 0 %>"/>
     				<div id="displayProdNo"></div>
 			        <label for="revTitle">후기 제목:</label><br>
 			        <input type="text" id="revTitle" name="revTitle"><br>
