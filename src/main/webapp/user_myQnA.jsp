@@ -1,176 +1,108 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="catshap.butler.bean.Users"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-  <head>
+<%
+	Users user = (Users)session.getAttribute("user");
+	System.out.println(user);
+	if(user != null){
+		int userNo = user.getUserNo(); 
+	}
+%>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-
     <link rel="stylesheet" href="./css/global.css" />
-    <link rel="stylesheet" href="./css/user_myQnA.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Short Stack:wght@400&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
-    />
-  </head>
-  <body>
-    <div class="div">
-      <div class="frame">
-        <div class="backgroundhorizontalborder">
-          <div class="horizontalborder">
-            <div class="list">
-              <img class="item-icon" alt="" src="./public/item@2x.png" />
-
-              <div class="item"></div>
-              <div class="item1">
-                <img class="link-icon" alt="" src="./public/link.svg" />
-
-                <div class="link">
-                  <img class="icon" alt="" src="./public/icon.svg" />
-
-                  <div class="background">
-                    <b class="strong-0">0</b>
-                  </div>
+    <link rel="stylesheet" href="./css/user_myReview.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Short+Stack:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+    <script src="./js/check_login.js" ></script>
+    <script src="./js/user_myQnA.js" ></script>
+</head>
+<body>
+    <div class="xans-element- xans-myshop xans-myshop-boardpackage">
+        <div class="sp--width" scope="box">
+            <div class="sp--title" theme="underline-heavy" scale="2xl-nude">
+                <div class="sp--title-inner">
+                    <dt><span>Q n A</span></dt>
+                    <i class="sp--icon" ico="string" rotate="135" scale="xs" hspace="xs"></i>
+                    <span class="sp--title-subtext">내가 작성한 QnA의 목록입니다.</span>
                 </div>
-              </div>
             </div>
-            <div class="div1">
-              <div class="child"></div>
-              <img
-                class="black-15006260-2-icon"
-                alt=""
-                src="./public/black-15006260-2@2x.png"
-              />
-
-              <div class="div2">냥</div>
-              <div class="div3">#</div>
-            </div>
-          </div>
-          <div class="list1">
-            <div class="item2">
-              <div class="list-item">
-                <img class="icon1" alt="" src="./public/icon1@2x.png" />
-
-                <div class="link1">
-                  <img class="icon2" alt="" src="./public/icon2.svg" />
-
-                  <div class="div4">  고객 지원센터</div>
-                  <b class="strong-01092304449">01012345678</b>
-                  <img class="icon3" alt="" src="./public/icon3@2x.png" />
+            <form id="boardSearchForm" name="" action="/myshop/board_list.html" method="get" target="" enctype="multipart/form-data">
+                <input id="board_no" name="board_no" value="" type="hidden" />
+                <input id="page" name="page" value="1" type="hidden" />
+                <input id="board_sort" name="board_sort" value="" type="hidden" />
+                <div class="xans-element- xans-myshop xans-myshop-boardlistsearch">
+                    <div class="sp--box" fill="justify" vertical="middle">
+                        <ul class="sp--form" theme="xl-light-fill-round">
+                            <li>
+                                <div class="xans-element- xans-myshop xans-myshop-boardlisthead sp--title-right"></div>
+                            </li>
+                            <li>
+                                <div class="sp--box" gap="sm" vertical="middle">
+                                    <ul>
+                                        <li>
+                                            <select id="search_key" name="search_key">
+                                                <option value="member_id">상품명</option>
+                                                <option value="subject">제목</option>
+                                                <option value="content">내용</option>
+                                            </select>
+                                        </li>
+                                        <li sp--js-placeholder="검색어를 입력하세요.">
+                                            <input id="search" name="search" class="inputTypeText" placeholder="검색어를 입력하세요." type="text" />
+                                        </li>
+                                        <li>
+                                            <a href="./user_myQnA.jsp" class="sp--btn" theme="box-white-round" scale="xl" id="resetButton">
+                                                <i class="sp--icon" ico="reload" scale="md-minup"></i>
+                                                &nbsp; 초기화
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="sp--btn" theme="box-dark-round" scale="xl" id="searchButton">
+                                                <i class="sp--icon" ico="search" scale="md-minup"></i>
+                                                &nbsp; 검색
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-              </div>
+            </form>
+            <!-- 모달 창 HTML -->
+			<div id="reviewModal" class="modal">
+			  <div class="modal-content">
+			    <span class="close">&times;</span>
+			    <h2 id="modalReviewTitle">리뷰 제목</h2>
+			    <p><strong>작성자:</strong> <span id="modalReviewAuthor"></span></p>
+			    <p><strong>작성일:</strong> <span id="modalReviewDate"></span></p>
+			    <p id="modalReviewContent"></p>
+			  </div>
+			</div>
+            <div class="xans-element- xans-myshop xans-myshop-boardlist">
+                <table  id="qnaTable" class="sp--table" theme="lg-center" gap="2xl" solid="light-nude" vertical="middle">
+                    <caption>게시물 관리 목록</caption>
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>카테고리</th>
+                            <th>상품</th>
+                            <th>제목</th>
+                            <th>내용</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody id="qnaTableBody">
+                        <!-- 내가 쓴 리뷰 내용 출력 -->
+                    </tbody>
+                </table>
             </div>
-            <div class="item3"></div>
-            <div class="list2">
-              <div class="item4">
-                <div class="link2">로그인</div>
-                <img class="icon4" alt="" src="./public/icon4@2x.png" />
-
-                <div class="link3">
-                  <div class="div5">회원가입</div>
-                  <div class="background1">
-                    <div class="div6">적립금 2,000원</div>
-                  </div>
-                </div>
-              </div>
-              <div class="item-link">
-                <img class="icon2" alt="" src="./public/icon5.svg" />
-
-                <div class="div7">  배송조회</div>
-              </div>
-              <img class="item-link1" alt="" src="./public/item--link.svg" />
-            </div>
-          </div>
         </div>
-        <div class="container">
-          <b class="strong-my-container">
-            <span class="strong-my-container1">
-              <p class="my">MY</p>
-              <p class="my">BOARD</p>
-            </span>
-          </b>
-
-          <div class="div8">내 게시글 · 관리</div>
-          <div class="horizontal-divider"></div>
-          <div class="list-item1">
-            <img class="link-icon1" alt="" src="./public/link1.svg" />
-
-            <div class="link4">
-              <img class="icon6" alt="" src="./public/icon6.svg" />
-
-              <div class="div9">  마이쇼핑</div>
-            </div>
-            <div class="link5">
-              <img class="icon6" alt="" src="./public/icon6.svg" />
-
-              <div class="div10">  나의 게시글</div>
-            </div>
-          </div>
-        </div>
-        <div class="backgroundhorizontalbordersh">
-          <div class="backgroundhorizontalbordersh1">
-            <div class="list3">
-              <div class="list4">
-                <div class="item-link2">
-                  <div class="div11">간식</div>
-                </div>
-                <div class="item-link3">
-                  <div class="div11">사료</div>
-                </div>
-                <div class="item-link4">
-                  <div class="div13">장난감</div>
-                </div>
-                <div class="item-link5">
-                  <div class="div13">옷</div>
-                </div>
-                <div class="item-link6">
-                  <div class="div13">기타</div>
-                </div>
-                <img class="item-icon1" alt="" src="./public/item1@2x.png" />
-
-                <div class="item-link7">
-                  <b class="strong-q">Q & A</b>
-                </div>
-                <div class="item-link8">
-                  <div class="reviews">REVIEWS</div>
-                  <div class="emphasis"></div>
-                </div>
-                <div class="item5">
-                  <div class="button">
-                    <div class="background2"></div>
-                    <div class="background3"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="item6">
-                <div class="button">
-                  <div class="background2"></div>
-                  <div class="background3"></div>
-                </div>
-              </div>
-              <img class="item-icon2" alt="" src="./public/item.svg" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="frame1">
-        <div class="container1">
-          <div class="container2">
-            <img class="icon8" alt="" src="./public/icon7.svg" />
-
-            <div class="div16">작성한 게시물이 없습니다.</div>
-          </div>
-        </div>
-        <img class="image-5-icon" alt="" src="./public/image-5@2x.png" />
-      </div>
     </div>
-  </body>
+</body>
 </html>

@@ -1,11 +1,11 @@
  // 페이지가 로드된 후 실행되도록 설정
 document.addEventListener("DOMContentLoaded", function() {
     // input 요소를 선택
-    var prodNoInput = document.getElementById("prodNo");
+    const prodNoInput = document.getElementById("prodNo");
     
     // value 값을 가져와서 페이지에 표시
-    var prodNoValue = prodNoInput.value;
-    var displayElement = document.getElementById("displayProdNo"); // 값을 표시할 HTML 요소의 ID
+    const prodNoValue = prodNoInput.value;
+    const displayElement = document.getElementById("displayProdNo"); // 값을 표시할 HTML 요소의 ID
     if (displayElement) {
         displayElement.textContent = "Product Number: " + prodNoValue;
     }
@@ -37,16 +37,16 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault(); // 폼 제출 기본 동작 방지
  	checkLoginStatus(function() {
         // 폼 데이터 가져오기
-
+        
+	    const prodNo = $('#prodNo').val();
         const userNo = $('#userNo').val();
-        const prodNo = $('#prodNo').val();
         const revTitle = $('#revTitle').val();
         const revText = $('#revText').val();
         const revScore = $('#revScore').val();
 
 		// 값 콘솔에 출력하기
-	    console.log('userNo:', userNo);
 	    console.log('prodNo:', prodNo);
+	    console.log('userNo:', userNo);
 	    console.log('revTitle:', revTitle);
 	    console.log('revText:', revText);
 	    console.log('revScore:', revScore);
@@ -63,8 +63,8 @@ document.addEventListener("DOMContentLoaded", function() {
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
+				prodNo: prodNo,
                 userNo: userNo,
-                prodNo: prodNo,
                 revTitle: revTitle,
                 revText: revText,
                 revScore: revScore // 숫자로 변환

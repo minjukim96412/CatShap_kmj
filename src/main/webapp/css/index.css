@@ -1,15 +1,15 @@
 @charset "UTF-8";
 .item,
-.item1 {
+.item1 {  
   height: 19.6px;
   position: relative;
   display: none;
 }
-.item {
+.item {  
   width: 1042.2px;
   max-width: 100%;
 }
-.item1 {
+.item1 {  
   width: 24.2px;
 }
 .cart-product {

@@ -10,6 +10,7 @@
 		<typeAlias type="catshap.butler.bean.Product" alias="Product" />
 		<typeAlias type="catshap.butler.bean.ProductView" alias="ProductView" />
 		<typeAlias type="catshap.butler.bean.ReviewView" alias="ReviewView" />
+		<typeAlias type="catshap.butler.bean.UserQnA" alias="UserQnA" />
 		<typeAlias type="catshap.butler.bean.Image" alias="Image" />
 		<typeAlias alias="QnaBoard" type="catshap.butler.bean.QnaBoard"/>
         <typeAlias alias="Search" type="catshap.butler.bean.Search"/>
@@ -28,6 +29,7 @@
 	</environments>
 	<mappers>
 		<mapper resource="catshap/butler/conf/User.xml"/>
+		<mapper resource="catshap/butler/conf/UserQnA.xml"/>
 		<mapper resource="catshap/butler/conf/UserAuthcode.xml"/>
 		<mapper resource="catshap/butler/conf/Product.xml" />
 		<mapper resource="catshap/butler/conf/ProductView.xml" />

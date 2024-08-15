@@ -1,4 +1,4 @@
-.modal {
+.modal {  
     display: none; /* 숨김 상태로 시작 */
     position: fixed; /* 화면 고정 */
     z-index: 1000; /* 높은 z-index 값 */
@@ -9,7 +9,7 @@
     overflow: auto; /* 스크롤 가능 */
     background-color: rgba(0,0,0,0.4); /* 투명한 검정색 배경 */
 }
-
+  
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 중앙 정렬 */

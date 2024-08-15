@@ -2,7 +2,7 @@
 ** icon package
 ** https://codepen.io/sosuke/pen/Pjoqqp
 */
-@font-face {
+@font-face {   
     font-family: 'spstrap-icon-font';
     src:
         url('./iconfont/spstrap-icon-font.ttf') format('truetype'),
@@ -13,7 +13,7 @@
     font-style: normal;
     font-display: block;
 }
-.sp--mix {
+.sp--mix {  
     vertical-align: middle;
     text-overflow: ellipsis;
     display: inline-flex;

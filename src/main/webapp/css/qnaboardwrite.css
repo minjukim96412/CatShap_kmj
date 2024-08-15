@@ -1,4 +1,4 @@
-.parent {
+.parent {  
   width: 80.9px;
   display: flex;
   flex-direction: row;
@@ -8,7 +8,7 @@
   flex-shrink: 0;
 }
 .div113 {
-  flex: 1;
+  flex: 1;  
   position: relative;
   line-height: 23px;
   

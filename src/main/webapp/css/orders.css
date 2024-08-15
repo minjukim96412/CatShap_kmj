@@ -1,8 +1,8 @@
 .detail-title,
 .title-detail-container {
-    align-self: stretch;
+    align-self: stretch;  
 }
-
+  
 .detail-title {
     text-align: center;
     position: relative;

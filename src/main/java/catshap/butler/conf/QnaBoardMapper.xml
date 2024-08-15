@@ -52,4 +52,6 @@
         DELETE FROM QNA 
         WHERE QNANO = #{qnano}
     </delete>
+    
+    
 </mapper>

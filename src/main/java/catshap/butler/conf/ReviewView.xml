@@ -30,7 +30,7 @@
     </select>
     
     <insert id="registReview" parameterType="ReviewView"> 
-    	INSERT INTO REVIEW VALUES (seq_reviewno.nextval, #{userNo},
-    	 #{prodNo}, #{revTitle}, #{revText}, sysdate, NULL ,#{revScore})
+    	INSERT INTO REVIEW VALUES (seq_reviewno.nextval, #{prodNo},
+    	#{userNo}, #{revTitle}, #{revText}, sysdate, NULL ,#{revScore})
     </insert>
 </mapper>

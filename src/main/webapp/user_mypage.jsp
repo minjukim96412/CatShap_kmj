@@ -1,14 +1,13 @@
-
 <%@page import="catshap.butler.bean.Users"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1, width=device-width" />
-  <link rel="stylesheet" href="./css/global.css" />
-  <link rel="stylesheet" href="./css/user_mypage.css" />
+  <link href="./css/global.css" rel="stylesheet" />
+  <link href="./css/user_mypage.css" rel="stylesheet" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="./js/check_login.js"></script>
   <script src="./js/user.js"></script>

@@ -1,4 +1,4 @@
-#userExitBtn {
+#userExitBtn {  
   float: right;
   margin-top : 15px;
   flex: 1;
@@ -15,9 +15,9 @@
   opacity: 0.95;
   cursor: pointer;
   color: var(--color-darkslategray-200);
-}
+}  
 
-.container {
+.container {  
     width: 100%;
     max-width: 800px;
     margin: 50px auto;

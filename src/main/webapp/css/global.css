@@ -3,8 +3,7 @@ body {
     line-height: normal;
   }
 
-  
-  :root {
+ :root {
     /* fonts */
     --font-jost: Jost;
     --font-short-stack: "Short Stack";
@@ -336,7 +335,7 @@ body {
     --padding-47xl: 66px;
     --padding-113xl: 132px;
     --padding-11xs-4: 1.4px;
-  
+     
     /* Border radiuses */
     --br-9xs: 4px;
     --br-1381xl: 1400px;
@@ -347,5 +346,5 @@ body {
     --br-8xs: 5px;
     --br-11xl: 30px;
     --br-6xs: 7px;
-  }
+  }   
   

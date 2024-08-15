@@ -9,7 +9,7 @@
     padding: 5px 10px;
     margin: 0 2px;
     cursor: pointer;
-}
+}  
 
 #pagination-controls button.current-page {
     background-color: #4CAF50;
