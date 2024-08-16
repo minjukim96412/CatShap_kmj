@@ -22,6 +22,7 @@
     <script src="./js/user_myQnA.js" ></script>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
     <div class="xans-element- xans-myshop xans-myshop-boardpackage">
         <div class="sp--width" scope="box">
             <div class="sp--title" theme="underline-heavy" scale="2xl-nude">
@@ -104,5 +105,6 @@
             </div>
         </div>
     </div>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

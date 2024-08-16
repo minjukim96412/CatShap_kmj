@@ -52,20 +52,20 @@
                         </div>
                     </div>
                 </div>
-                <img class="item-icon59" src="./image/catSvg5.svg" />
+                <img class="item-icon59" src="./image/catSvg5.png" />
                 <div class="paint"></div>
                 <input class="search" id="search" type="text" placeholder="search" />
             </div>
         </div>
         <div class="horizontalborder26">
-            <img class="item-icon60" loading="lazy" alt="" src="./image/imgCat.png" />
+            <img class="item-icon60"  alt="" src="./image/imgCat.png" />
             <div class="item43">
             </div>
             <div class="external-link-wrapper">
                 <div class="external-link">
-                    <img class="link-icon36" loading="lazy" alt="" src="./image/catSvg1.svg" id="linkIcon" />
+                    <img class="link-icon36"  alt="" src="./image/catSvg1.png" id="linkIcon" />
                     <div class="link92" id="linkContainer">
-                        <img class="icon211" loading="lazy" alt="" src="./image/catSvg2.svg" />
+                        <img class="icon211"  alt="" src="./image/catSvg2.png" />
                         <b class="strong-018">0</b>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
         </div>
         <div>
             <img class="icon212" alt="" src="./image/icon1.png" />
-            <img class="icon213" alt="" src="./image/catSvg3.svg" />
+            <img class="icon213" alt="" src="./image/catSvg3.png" />
             <div class="div422">  고객 지원센터</div>
             <a class="strong-0109230444918">01012345678</a>
             <img class="icon214" alt="" src="./image/icon2.png" />
@@ -88,7 +88,7 @@
             <div class="link94" id="linkContainer">
                 <a class="a66">회원가입</a>
             </div>
-            <img class="icon216" alt="" src="./image/catSvg4.svg" />
+            <img class="icon216" alt="" src="./image/catSvg4.png" />
             <a class="a67" id="text3">주문정보</a>
         </div>
         <div class="div423">

@@ -19,6 +19,7 @@
 <script src="./js/user.js"></script>
 </head>
 <body class="user_modify">
+	<jsp:include page="header.jsp"></jsp:include>
 	<div class="modify-wrapper">`
 		<div class="auth-modify-wrapper">
 			<div class="auth-container">
@@ -216,5 +217,6 @@
 			</div>
 		</section>
 	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

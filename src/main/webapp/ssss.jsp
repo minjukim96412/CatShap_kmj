@@ -1,37 +1,36 @@
-
-<%@page import="java.io.Console"%>
-<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
-<%@page import="catshap.butler.bean.Users"%>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="catshap.butler.bean.ReviewView"%>
-<%@page import="catshap.butler.dao.ReviewViewDao"%>
+<%@page import="catshap.butler.bean.Users"%>
+<%@page import="catshap.butler.interfaces.ProductViewInterface"%>
 <%@page import="catshap.butler.interfaces.ReviewViewInterface"%>
 <%@page import="catshap.butler.bean.ProductView"%>
+<%@page import="catshap.butler.bean.ReviewView"%>
 <%@page import="catshap.butler.dao.ProductViewDao"%>
-<%@page import="catshap.butler.interfaces.ProductViewInterface"%>
+<%@page import="catshap.butler.dao.ReviewViewDao"%>
 <%@page import="java.util.List"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <%
-		int prodNo = Integer.parseInt(request.getParameter("prodNo"));
-		ProductViewInterface pi = new ProductViewDao();
-		ProductView productView = pi.getProduct(prodNo);
-		
-		ReviewViewInterface ri = new ReviewViewDao();
-		List<ReviewView> listReview = ri.selectReviewList(prodNo);
-		
-		pageContext.setAttribute("productView", productView);
-		pageContext.setAttribute("listReview", listReview);
-		
-	    HttpSession session2 = request.getSession();
-	    Users user = (Users) session2.getAttribute("user");
-	    int userNo = (user != null) ? user.getUserNo() : 0;
-		pi.addCount(prodNo);
+	int prodNo = Integer.parseInt(request.getParameter("prodNo"));
+	ProductViewInterface pi = new ProductViewDao();
+	ProductView productView = pi.getProduct(prodNo);
+	
+	ReviewViewInterface ri = new ReviewViewDao();
+	List<ReviewView> listReview = ri.selectReviewList(prodNo);
+	
+	pageContext.setAttribute("productView", productView);
+	pageContext.setAttribute("listReview", listReview);
+	
+	HttpSession session2 = request.getSession();
+	Users user = (Users) session2.getAttribute("user");
+	int userNo = (user != null) ? user.getUserNo() : 0;
+	pi.addCount(prodNo);
 %>
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -39,22 +38,48 @@
     <link rel="stylesheet" href="./css/B-02.css" />
     <link rel="stylesheet" href="./css/review.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./js/ProductView.js"></script>
-    <script src="./js/review.js"></script>
-    
+    <script src="./js/productView.js"></script>
+    <script>
+        var userNo = <%= userNo %>; // 사용자 번호가 없으면 0
+        
+        function checkLogin() {
+            if (userNo === 0) {
+                alert("로그인 후 장바구니에 추가할 수 있습니다.");
+                return false;
+            }
+            return true;
+        }
+        
+        function handleSubmit(event) {
+            if (!checkLogin()) {
+                event.preventDefault();
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
+
 <body>
     <jsp:include page="header.jsp"></jsp:include>
+     
+     <form action="add.jsp" method="post" onsubmit="return handleSubmit(event);">
+        <input type="hidden" name="prodNo" value="<%= productView.getProdNo() %>">
+        <input type="hidden" name="userNo" value="<%= userNo %>">
+        <input type="hidden" name="baskAmt" value="1">
+        <button type="submit">장바구니 추가</button>
+    </form>
+    
     <div class="div63">
         <main class="container11">
             <div class="hygiene-info">
                 <div class="hygiene-icon">
-                    <img class="link-icon9" alt="" src="./image/home_link.svg" />
+                    <img class="link-icon9" alt="" src="./image/link-12.svg" />
                 </div>
                 <div class="hygiene-icon1">
-                    <img class="link-icon9" alt="" src="./image/home_icon1.svg" />
+                    <img class="link-icon9" alt="" src="./image/icon-13.svg" />
                 </div>
-                <a class="a11">  위생용품</a>
+                <a class="a11">위생용품</a>
             </div>
             <div class="list-item"></div>
             <div class="product-details"></div>
@@ -71,9 +96,9 @@
                             </div>
                             <div class="item7">
                                 <div class="link18">
-                                    <div class="c-a-r">  C A R T</div>
+                                    <div class="c-a-r">C A R T</div>
                                     <div class="cart-icon">
-                                        <img class="icon48" alt="" src="./image/prod_icon1.svg" />
+                                        <img class="icon48" alt="" src="./image/icon-72.svg" />
                                     </div>
                                 </div>
                             </div>
@@ -87,14 +112,14 @@
                                     <div class="link19">
                                         <a class="a13">회원혜택  </a>
                                         <div class="total-payment">
-                                            <img class="icon49" alt="" src="./image/prod_icon2.png" />
+                                            <img class="icon49" alt="" src="./image/icon-82@2x.png" />
                                         </div>
                                     </div>
                                     <a class="a14">최종 결제금액 </a>
-                                    <img class="icon50" alt="" src="./image/icon2.png" />
+                                    <img class="icon50" alt="" src="./image/icon-91@2x.png" />
 
                                     <div class="discount-image">
-                                        <img class="icon48" alt="" src="./image/prod_icon3.svg" />
+                                        <img class="icon48" alt="" src="./image/icon-102.svg" />
                                     </div>
                                 </div>
                             </div>
@@ -103,11 +128,10 @@
                                     <div class="horizontal-divider4"></div>
                                     <div class="selected-option">
                                         <div class="selected-title">
-                                            <img class="icon52" alt="" src="./image/prod_icon4.png" />
+                                            <img class="icon52" alt="" src="./image/icon-112@2x.png" />
                                             <div class="option-placeholder">
                                                 <div class="horizontalborder6">
-                                                    <a class="a15">선택된
-                                                        옵션</a>
+                                                    <a class="a15">선택된 옵션</a>
                                                 </div>
                                                 <div class="quantity">
                                                     <div class="div72">
@@ -145,7 +169,7 @@
                                                         <a class="a16">주문
                                                             수량안내 </a>
                                                         <div class="order-quantity-icon">
-                                                            <img class="icon53" alt="" src="./image/icon2.png" />
+                                                            <img class="icon53" alt="" src="./image/icon-122@2x.png" />
                                                         </div>
                                                         <div class="div75">
                                                             <span> 최소 주문수량
@@ -173,7 +197,7 @@
                 <div class="total-price">
                     <div class="price-container">
                         <div class="price-value-container">
-                            <img class="icon54" alt="" src="./image/prod_icon5.png" />
+                            <img class="icon54" alt="" src="./image/icon-132@2x.png" />
                         </div>
                         <a class="strong-emphasis">0</a>
                         <div class="item-count">
@@ -182,7 +206,7 @@
                     </div>
                 </div>
             </div>
-            <img class="icon55" alt="" src="./image/prod_icon4.png" />
+            <img class="icon55" alt="" src="./image/icon-141@2x.png" />
             <div class="horizontalborder-group">
             </div>
     </div>
@@ -222,7 +246,8 @@
         </div>
     </div>
 
-    <img class="separator-icon7" loading="lazy" alt="" src="./image/prod_separator.svg" />
+    
+   <img class="separator-icon7" loading="lazy" alt="" src="./image/prod_separator.svg" />
     <img class="separator-icon8" loading="lazy" alt="" src="./image/prod_separator2.svg" />
     <img id="a" class="km1907-77jpg-icon" loading="lazy" alt="" src="./image/${productView.prodDetailImgPath}" />
     <img class="separator-icon9" loading="lazy" alt="" src="./image/separator-21.svg" />
@@ -282,40 +307,38 @@
         </section>
     </c:otherwise>
 </c:choose>
-        </div>
-			<!-- 모달 -->
-			<div id="reviewModal" class="modal">
-			    <!-- 모달 내용 -->
-			    <div class="modal-content">
-			        <span class="close">&times;</span>
-			        <h2>상품후기 작성</h2>
-			        <!-- 모달 내용 -->
-			        <input type="hidden" id="prodNo" value="<%= prodNo %>"/>
-			         <input type="hidden" id="userNo" value="<%= user != null ? user.getUserNo() : 0 %>"/>
-    				<div id="displayProdNo"></div>
-			        <label for="revTitle">후기 제목:</label><br>
-			        <input type="text" id="revTitle" name="revTitle"><br>
-			        
-			        <label for="revText">후기 내용:</label><br>
-			        <textarea id="revText" name="revText"></textarea><br>
-			        
-			        <label for="revScore">평점:</label><br>
-			        <input type="number" id="revScore" name="revScore" min="1" max="5"><br>
-			        
-			        <button id="submitReview">등록</button>
-			        <p id="message"></p> <!-- 메시지 출력 -->
-			        <div id="displayProdNo"></div>
-			    </div>
-			</div>
-        </div>
-    </div>
+   <!-- 모달 -->
+      <div id="reviewModal" class="modal">
+          <!-- 모달 내용 -->
+          <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>상품후기 작성</h2>
+              <!-- 모달 내용 -->
+              <input type="hidden" id="prodNo" value="<%= prodNo %>"/>
+               <input type="hidden" id="userNo" value="<%= user != null ? user.getUserNo() : 0 %>"/>
+               <div id="displayProdNo"></div>
+              <label for="revTitle">후기 제목:</label><br>
+              <input type="text" id="revTitle" name="revTitle"><br>
+              
+              <label for="revText">후기 내용:</label><br>
+              <textarea id="revText" name="revText"></textarea><br>
+              
+              <label for="revScore">평점:</label><br>
+              <input type="number" id="revScore" name="revScore" min="1" max="5"><br>
+              
+              <button id="submitReview">등록</button>
+              <p id="message"></p> <!-- 메시지 출력 -->
+              <div id="displayProdNo"></div>
+          </div>
+      </div>
+   </div>
     <div class="separator6"></div>
     <img class="separator-icon10" loading="lazy" alt="" src="./image/separator-31.svg" />
     <div class="item10"></div>
     <section class="price-summary-container-parent">
         <div class="price-summary-container">
             <div class="price-summary-inner-container">
-                <img class="container-icon2" loading="lazy" alt="" src="./image/container1@2x.png" />
+                <img class="container-icon2" alt="" src=`./${productView.prodImgPath}` />
                 <div class="separator7"></div>
             </div>
         </div>
@@ -519,11 +542,11 @@
                     </div>
                     <div class="purchase-buttons">
                         <div class="item12" id="itemContainer">
-                            <a href="buy.jsp?prodNo=${productView.prodNo}">
-                                <div class="link30">
-                                    <b class="strong-b1">B U Y</b>
-                                </div>
-                            </a>
+                            <div class="link30">
+                               <button id="buyBtn" class="strong-b1" data-prodno="${productView.prodNo}">
+                            B U Y
+                        </button>
+                            </div>
                         </div>
                         <div class="item13">
                             <div class="link31">
@@ -539,6 +562,7 @@
     </main>
     <div id="c"></div>
     </div>
-    <img class="prodImgPath" alt="" src="./image/${productView.prodImgPath}" />
+    <img class="prodImgPath" alt="" src="./${productView.prodImgPath}" />
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -22,6 +22,7 @@
     <script src="./js/user_myReview.js" ></script>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
     <div class="xans-element- xans-myshop xans-myshop-boardpackage">
         <div class="sp--width" scope="box">
             <div class="sp--title" theme="underline-heavy" scale="2xl-nude">
@@ -31,48 +32,6 @@
                     <span class="sp--title-subtext">내가 작성한 상품후기의 목록입니다.</span>
                 </div>
             </div>
-            <form id="boardSearchForm" name="" action="/myshop/board_list.html" method="get" target="" enctype="multipart/form-data">
-                <input id="board_no" name="board_no" value="" type="hidden" />
-                <input id="page" name="page" value="1" type="hidden" />
-                <input id="board_sort" name="board_sort" value="" type="hidden" />
-                <div class="xans-element- xans-myshop xans-myshop-boardlistsearch">
-                    <div class="sp--box" fill="justify" vertical="middle">
-                        <ul class="sp--form" theme="xl-light-fill-round">
-                            <li>
-                                <div class="xans-element- xans-myshop xans-myshop-boardlisthead sp--title-right"></div>
-                            </li>
-                            <li>
-                                <div class="sp--box" gap="sm" vertical="middle">
-                                    <ul>
-                                        <li>
-                                            <select id="search_key" name="search_key">
-                                                <option value="member_id">상품명</option>
-                                                <option value="subject">제목</option>
-                                                <option value="content">내용</option>
-                                            </select>
-                                        </li>
-                                        <li sp--js-placeholder="검색어를 입력하세요.">
-                                            <input id="search" name="search" class="inputTypeText" placeholder="검색어를 입력하세요." type="text" />
-                                        </li>
-                                        <li>
-                                            <a href="#" class="sp--btn" theme="box-white-round" scale="xl" id="resetButton">
-                                                <i class="sp--icon" ico="reload" scale="md-minup"></i>
-                                                &nbsp; 초기화
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="sp--btn" theme="box-dark-round" scale="xl" id="searchButton">
-                                                <i class="sp--icon" ico="search" scale="md-minup"></i>
-                                                &nbsp; 검색
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </form>
             <!-- 모달 창 HTML -->
 			<div id="reviewModal" class="modal">
 			  <div class="modal-content">
@@ -88,12 +47,12 @@
                     <caption>게시물 관리 목록</caption>
                     <thead>
                         <tr>
-                            <th scope="col">번호</th>
-                            <th scope="col">상품</th>
-                            <th scope="col">제목</th>
-                            <th scope="col">내용</th>
-                            <th scope="col">작성자</th>
-                            <th scope="col">작성일</th>
+                            <th>번호</th>
+                            <th>상품</th>
+                            <th>제목</th>
+                            <th>내용</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
                         </tr>
                     </thead>
                     <tbody id="reviewTableBody">
@@ -101,7 +60,10 @@
                     </tbody>
                 </table>
             </div>
+             <!-- 페이지네이션 -->
+            <div class="pagination"></div>
         </div>
     </div>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

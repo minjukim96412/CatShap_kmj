@@ -37,11 +37,11 @@
             </div>
             <div class="login-container">
                <div class="link-wrapper4">
-                  <img class="link-icon29" alt="" src="./image/join_link.svg" />
+                  <img class="link-icon29" alt="" src="./image/home_link.svg" />
                </div>
                <div class="login-icon-container-parent">
                   <div class="login-icon-container">
-                     <img class="link-icon29" alt="" src="./image/join_icon1.svg" />
+                     <img class="link-icon29" alt="" src="./image/home_icon1.svg" />
                   </div>
                   <div class="div327"><a href="user_login.jsp">로그인</a></div>
                </div>

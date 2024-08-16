@@ -1,3 +1,110 @@
+/* 전체 리뷰 목록 스타일 */
+.review-item {
+	width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.review-title {
+    display: flex;
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+
+.review-nickname {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.review-date {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.review-score {
+    font-size: 1em;
+    color: #ff9800;
+    margin-bottom: 10px;
+}
+
+.review-text {
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.review-title-label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.review-score, .review-author, .review-text {
+    margin: 5px 0;
+    font-size: 14px;
+}
+/* 구분선 스타일 */
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* 페이지 네이션 스타일 */
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination a:hover {
+    background-color: #e9ecef;
+}
+
+/* 빈 리뷰 메시지 스타일 */
+.empty-review-message {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.icon57 {
+    width: 50px;
+    height: 50px;
+}
+
+.div89 {
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 10px;
+}
+
+.div90 {
+    text-align: center;
+    font-size: 1em;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+
 .link75 {
   flex: 1;
   border-radius: var(--br-10xs);
@@ -124,7 +231,6 @@ h2 {
 
 /* 입력 필드 스타일링 */
 input[type="text"], textarea, input[type="number"] {
-    width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #cccccc;

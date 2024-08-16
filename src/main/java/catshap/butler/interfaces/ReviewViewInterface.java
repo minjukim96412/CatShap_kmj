@@ -12,5 +12,9 @@ public interface ReviewViewInterface {
 	public abstract int registReview(ReviewView reviewView) throws SQLException;
 
 	public abstract List<ReviewView> selectUserReviewList(int userNo) throws Exception;
+
+	public abstract List<ReviewView> userReviewPage(int userNo, int page, int pageSize) throws Exception;
+
+	public abstract int countUserReviews(int userNo) throws Exception;
 	
 }

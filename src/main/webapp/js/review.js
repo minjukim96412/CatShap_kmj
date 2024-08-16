@@ -1,4 +1,4 @@
- // 페이지가 로드된 후 실행되도록 설정
+// 페이지가 로드된 후 실행되도록 설정
 document.addEventListener("DOMContentLoaded", function() {
     // input 요소를 선택
     const prodNoInput = document.getElementById("prodNo");
@@ -11,81 +11,94 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
- $(document).ready(function() {
-            const $modal = $('#reviewModal');
-            const $openModalButton = $('#reviewBtn');
+$(document).ready(function() {
+    // 페이지 로드 시 저장된 스크롤 위치로 이동
+    const scrollPosition = localStorage.getItem('scrollPosition');
+    if (scrollPosition) {
+        $(window).scrollTop(parseInt(scrollPosition, 10));
+        localStorage.removeItem('scrollPosition');
+    }
 
-            // 모달 열기
-            $openModalButton.on('click', function() {
-                $modal.show();
-            });
+    // 스크롤 위치 저장
+    $(window).on('beforeunload', function() {
+        localStorage.setItem('scrollPosition', $(window).scrollTop());
+    });
 
-            // 모달 닫기 버튼 클릭 시 모달 닫기
-            $modal.on('click', '.close', function () {
-                $modal.hide();
-            });
+    // 모달 관련 코드
+    const $modal = $('#reviewModal');
+    const $openModalButton = $('#reviewBtn');
 
-            // 모달 외부 클릭 시 모달 닫기
-            $(window).on('click', function (event) {
-                if ($(event.target).is($modal)) {
-                    $modal.hide();
-                }
-            });
+    // 모달 열기
+    $openModalButton.on('click', function() {
+        $modal.show();
+    });
 
-       // 리뷰 제출
+    // 모달 닫기 버튼 클릭 시 모달 닫기
+    $modal.on('click', '.close', function () {
+        $modal.hide();
+    });
+
+    // 모달 외부 클릭 시 모달 닫기
+    $(window).on('click', function (event) {
+        if ($(event.target).is($modal)) {
+            $modal.hide();
+        }
+    });
+
+    // 리뷰 제출
     $('#submitReview').on('click', function(event) {
         event.preventDefault(); // 폼 제출 기본 동작 방지
- 	checkLoginStatus(function() {
-        // 폼 데이터 가져오기
-        
-	    const prodNo = $('#prodNo').val();
-        const userNo = $('#userNo').val();
-        const revTitle = $('#revTitle').val();
-        const revText = $('#revText').val();
-        const revScore = $('#revScore').val();
+        checkLoginStatus(function() {
+            // 폼 데이터 가져오기
+            const prodNo = $('#prodNo').val();
+            const userNo = $('#userNo').val();
+            const revTitle = $('#revTitle').val();
+            const revText = $('#revText').val();
+            const revScore = $('#revScore').val();
 
-		// 값 콘솔에 출력하기
-	    console.log('prodNo:', prodNo);
-	    console.log('userNo:', userNo);
-	    console.log('revTitle:', revTitle);
-	    console.log('revText:', revText);
-	    console.log('revScore:', revScore);
+            // 값 콘솔에 출력하기
+            console.log('prodNo:', prodNo);
+            console.log('userNo:', userNo);
+            console.log('revTitle:', revTitle);
+            console.log('revText:', revText);
+            console.log('revScore:', revScore);
 
-        // 필수 필드가 비어있는지 확인
-        if (!userNo || !prodNo || !revTitle || !revText || isNaN(revScore) || revScore <= 0) {
-            $('#message').text('모든 필드를 올바르게 입력하세요.');
-            return;
-        }
-
-        // AJAX 요청
-        $.ajax({
-            url: '/catshap/RegistReview',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-				prodNo: prodNo,
-                userNo: userNo,
-                revTitle: revTitle,
-                revText: revText,
-                revScore: revScore // 숫자로 변환
-            }),
-            success: function(data) {
-                if (data.success) {
-                    $('#message').text('리뷰가 성공적으로 제출되었습니다!');
-                    $('#reviewModal').hide(); // 모달 닫기
-                } else {
-                    $('#message').text('리뷰 제출에 실패했습니다.');
-                }
-            },
-            error: function(xhr, status, error) {
-                $('#message').text('오류: ' + error);
+            // 필수 필드가 비어있는지 확인
+            if (!userNo || !prodNo || !revTitle || !revText || isNaN(revScore) || revScore <= 0) {
+                $('#message').text('모든 필드를 올바르게 입력하세요.');
+                return;
             }
+
+            // AJAX 요청
+            $.ajax({
+                url: '/catshap/RegistReview',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    prodNo: prodNo,
+                    userNo: userNo,
+                    revTitle: revTitle,
+                    revText: revText,
+                    revScore: revScore // 숫자로 변환
+                }),
+                success: function(data) {
+                    if (data.success) {
+                        $('#message').text('리뷰가 성공적으로 제출되었습니다!');
+                        $modal.hide(); // 모달 닫기
+                    } else {
+                        $('#message').text('리뷰 제출에 실패했습니다.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('#message').text('오류: ' + error);
+                }
+            });
         });
-        }); 
     });
- });
- 
- const checkLoginStatus = (callback) => {
+});
+
+// 로그인 상태 확인
+const checkLoginStatus = (callback) => {
     $.ajax({
         url: '/catshap/check-login-status',
         method: 'GET',
@@ -102,4 +115,5 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error checking login status:', textStatus, errorThrown);
         }
     });
-}
+};
+
